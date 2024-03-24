@@ -26,17 +26,35 @@ Links do projeto:
 ---
 
 ## Utilizando o Projeto
-<!--
+
 1. Faça um fork desse repositório para a sua conta do GitHub.
 2. Clone o repositório para o seu computador.
-3. Abra o arquivo README.md no seu editor de texto favorito (recomendamos o [Visual Studio Code](https://code.visualstudio.com/)).
-4. Tenha instaladas as seguintes extensões:
+3. Tenha o Python 3.12.2 instalado em sua máquina.
+4. Utilize uma IDE ou ainda um arquivo de texto (recomendamos o [Visual Studio Code](https://code.visualstudio.com/)).
+5. Recomendamos tambem a instalação das seguintes extensões:
+   - [autopep8](https://marketplace.visualstudio.com/items?itemName=https://marketplace.visualstudio.com/items?itemName=ms-python.autopep8)
+   - [Code Runner](https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner)
+   - [Django](https://marketplace.visualstudio.com/items?itemName=batisteo.vscode-django)
+   - [Python Debugger](https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy)
+   - [Djaneiro - Django Snippets](https://marketplace.visualstudio.com/items?itemName=thebarkman.vscode-djaneiro)
    - [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
-   - [TODO Highlight](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight)
-5. Edite o arquivo README.md com as informações do seu projeto.
+
+6. Crie um ambiente virtual (virtualenv ou venv) e instale as dependencias do arquivo [requirements](/requirements)
+7. No Shell com ambiente virtual ativo, use:
+
+    ``` sh
+    python env_gen.py
+    ```
+
+8. Depois use:
+
+    ``` sh
+    python manage.py runserver
+    ```
 
 ---
 
+<!--
 ## 1. Desenvolvimento
 
 **Escolha um dos modelos de sistemas para desenvolver o projeto. Apague as informações desnecessárias depois.**
