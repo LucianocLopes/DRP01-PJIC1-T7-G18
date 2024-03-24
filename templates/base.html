@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -15,5 +16,20 @@
             {% block content %}{% endblock content %}        
         </div>
     </div>
+=======
+{% load static i18n humanize %}
+
+<!DOCTYPE html>
+<html lang="pt-br" class>
+<head>
+    {% include 'parciais/_favicon.html' %}
+    {% include 'parciais/_head.html' %}
+</head>
+<body>
+    <h1>hello word</h1>
+    <p>my first test</p>
+    <button class="btn btn-primary" type="button">Test</button>
+    <img src="{% static 'img/school_image.png' %}" alt="imagem de uma escola" sizes="512x512">
+>>>>>>> 86a1e24 (preparing static file folder and template with html test)
 </body>
 </html>
