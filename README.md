@@ -9,8 +9,13 @@ Orientadora: [Laura Parisi](github.com/LucianocLopes/DRP01-PJIC1-T7-G18)
 
 Equipe:
 
+<<<<<<< HEAD
 - [Andreive Aparecido Cascarano, 2220994](github.com/LucianocLopes/DRP01-PJIC1-T7-G18)
 - [Erica Barbosa Decaris, 2200478](github.com/LucianocLopes/DRP01-PJIC1-T7-G18)
+=======
+- [Andreive Aparecido Cascarano, 2220994](github.com/andreivecascarano)
+- [Erica Barbosa Decaris, 2200478](github.com/DecarisErica)
+>>>>>>> bea5638 (include libs, css and js important for tests)
 - [Jonas Fernandes da Silva Barros, 1808258](github.com/JonasfsBarros)
 - [Kelly Pereira de Souza Nunes, 2208787](github.com/kpsnunes)
 - [Leonardo Souza Leite, 2201137](github.com/LucianocLopes/DRP01-PJIC1-T7-G18)
