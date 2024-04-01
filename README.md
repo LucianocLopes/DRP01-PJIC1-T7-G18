@@ -9,7 +9,7 @@ Orientadora: [Laura Parisi](github.com/LucianocLopes/DRP01-PJIC1-T7-G18)
 
 Equipe:
 
-- [Andreive Aparecido Cascarano, 2220994](github.com/LucianocLopes/DRP01-PJIC1-T7-G18)
+- [Andreive Aparecido Cascarano, 2220994](github.com/andreivecascarano)
 - [Erica Barbosa Decaris, 2200478](github.com/DecarisErica)
 - [Jonas Fernandes da Silva Barros, 1808258](github.com/JonasfsBarros)
 - [Kelly Pereira de Souza Nunes, 2208787](github.com/kpsnunes)
