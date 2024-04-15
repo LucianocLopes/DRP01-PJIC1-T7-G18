@@ -22,15 +22,21 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 <<<<<<< HEAD
+<<<<<<< HEAD
 from django.views.generic import TemplateView
 
 >>>>>>> 86a1e24 (preparing static file folder and template with html test)
 =======
 from schedule.views import all_events
 >>>>>>> a8c0174 (include core app and configs)
+=======
+from schedule.views import all_events
+>>>>>>> 16093fb (created app schedule, config and tests)
 
 urlpatterns = [
     path("", include('core.urls')),
     path('accounts/', include('allauth.urls')),
+    path("schedule/", include('schedule.urls')),
     path('admin/', admin.site.urls),
+    path("all_events/", all_events, name="all_events")
 ]

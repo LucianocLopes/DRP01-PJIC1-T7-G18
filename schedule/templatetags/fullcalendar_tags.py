@@ -1,7 +1,11 @@
 from django import template
 from django.utils.safestring import mark_safe
+<<<<<<< HEAD
 from schedule.fullcalendar import *
 
+=======
+from schedule.fullcalendar import javascript_url
+>>>>>>> 16093fb (created app schedule, config and tests)
 
 register = template.Library()
 
@@ -24,6 +28,7 @@ def fullcalendar_javascript_url():
 @register.simple_tag
 def fullcalendar_javascript():
     url = fullcalendar_javascript_url()
+<<<<<<< HEAD
     return mark_safe("<script src='/static/%s'></script>" % url)
 
 
@@ -135,3 +140,6 @@ def fullcalendar_timegrid_url():
 def fullcalendar_timegrid():
     url = fullcalendar_timegrid_url()
     return mark_safe("<script src='/static/%s'></script>" % url)
+=======
+    return mark_safe("<script src='%s'></script>" % url)
+>>>>>>> 16093fb (created app schedule, config and tests)

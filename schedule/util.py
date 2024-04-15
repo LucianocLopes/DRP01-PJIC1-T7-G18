@@ -14,6 +14,10 @@ def convert_field_names(event_list):
     Converts atribute names from Python code convention to the
     attribute names used by FullCalendar 
     """
+<<<<<<< HEAD
+=======
+    print(event_list)
+>>>>>>> 16093fb (created app schedule, config and tests)
     # for event in event_list:
     #     for key in event.keys():
     #         event[key] = event.pop(key)
@@ -51,20 +55,33 @@ def events_to_json(events_queryset):
     events_values = list(events_queryset.values(
         'id', 'title', 'start', 'end', 'all_day'))
     events_values = convert_field_names(events_values)
+<<<<<<< HEAD
 
     return json.dumps(events_values, default=date_handler)
 
 
 def calendar_options(event_url, default_view, options):
+=======
+    print(events_values)
+    return json.dumps(events_values, default=date_handler)
+
+
+def calendar_options(event_url, initial_grid, options):
+>>>>>>> 16093fb (created app schedule, config and tests)
     """
     Builds the Fullcalendar options array
 
     This function receives two strings. event_url is the url that returns a JSON array containing
     the calendar events. options is a JSON string with all the other options.
     """
+<<<<<<< HEAD
     default_view = default_view
     event_url_option = 'events: "/%s", plugins: ["interaction", "dayGrid", "timeGrid", "core", "list", "luxon", "moment", "moment-timezone", "rrule"], defaultView: "%s"' % (
         event_url, default_view)
+=======
+    event_url_option = 'events: "/%s", initialView: "%s" ' % (
+        event_url, initial_grid)
+>>>>>>> 16093fb (created app schedule, config and tests)
     s = options.strip()
     if s is not None and '{' in s:
         pos = s.index('{') + 1
