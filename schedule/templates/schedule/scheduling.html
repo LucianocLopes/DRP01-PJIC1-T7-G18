@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% load static humanize fullcalendar_tags %}
+
+{% block content %}
+
+    {% include 'parciais/_navbar.html' %}
+
+        {% calendar %}
+
+{% endblock content %}

@@ -9,9 +9,6 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
-import sys
-
 from environ import Env
 from pathlib import Path
 
@@ -28,7 +25,6 @@ env.read_env(
     BASE_DIR / '.env'
 )
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,8 +39,6 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'core',
-
 ]
 
 MIDDLEWARE = [

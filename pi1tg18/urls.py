@@ -23,7 +23,9 @@ from schedule.views import all_events
 urlpatterns = [
     path("", include('core.urls')),
     path('accounts/', include('allauth.urls')),
+    path("schedule/", include('schedule.urls')),
     path('admin/', admin.site.urls),
+    path("all_events/", all_events, name="all_events")
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
