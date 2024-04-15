@@ -21,12 +21,16 @@ from django.urls import path
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+<<<<<<< HEAD
 from django.views.generic import TemplateView
 
 >>>>>>> 86a1e24 (preparing static file folder and template with html test)
+=======
+from schedule.views import all_events
+>>>>>>> a8c0174 (include core app and configs)
 
 urlpatterns = [
-    path("", TemplateView.as_view(template_name="base.html"), name="index"),
+    path("", include('core.urls')),
     path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
 ]

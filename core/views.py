@@ -1,4 +1,5 @@
 from django.shortcuts import render
+<<<<<<< HEAD
 
 from django.views.generic.base import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -22,3 +23,13 @@ def page_not_found(request, exception):
 
 def server_error(request):
     return render(request, 'core/500.html', status=500)
+=======
+from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+# Create your views here.
+
+
+class IndexView(LoginRequiredMixin, TemplateView):
+    template_name = "core/index.html"
+>>>>>>> a8c0174 (include core app and configs)

@@ -10,6 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+<<<<<<< HEAD:pi1tg18/settings.py
+=======
+import sys
+
+from environ import Env
+>>>>>>> a8c0174 (include core app and configs):pi1tg18/settings/base.py
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,6 +34,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -44,7 +51,12 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+<<<<<<< HEAD:pi1tg18/settings.py
 >>>>>>> 1d2908e (include libs, css and js important for tests):pi1tg18/settings/base.py
+=======
+    'core',
+
+>>>>>>> a8c0174 (include core app and configs):pi1tg18/settings/base.py
 ]
 
 MIDDLEWARE = [
@@ -161,4 +173,10 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+<<<<<<< HEAD:pi1tg18/settings.py
 >>>>>>> 1d2908e (include libs, css and js important for tests):pi1tg18/settings/base.py
+=======
+
+LOGIN_URL = 'accounts/login'
+LOGOUT_URL = 'accounts/logout'
+>>>>>>> a8c0174 (include core app and configs):pi1tg18/settings/base.py
