@@ -1,0 +1,22 @@
+<div class="container-md">
+    <div id='wrap'>
+        <div class="p-5" id='calendar'></div>
+    </div>
+</div>
+
+<div id='external-events'>
+            <h4>EVENTOS</h4>
+            <div id='external-events-list'>
+                {% if eventos %}
+                    {% for evento in eventos %}
+                    <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+                        <div class='fc-event-main bg-danger danger text-white text-center border-black'>{{ evento.type }}</div>
+                    </div>
+                    {% endfor %}
+                {% endif %}              
+            </div>
+            <p>
+                <input type='checkbox' id='drop-remove' />
+                <label for='drop-remove'>REMOVER</label>
+            </p>
+        </div> 

@@ -1,0 +1,9 @@
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, 
+        {{ calendar_config_options }}
+        );
+        calendar.render();
+    });
+</script>

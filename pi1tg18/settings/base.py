@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
+import sys
+
 from environ import Env
 from pathlib import Path
 
@@ -25,6 +27,20 @@ env.read_env(
     BASE_DIR / '.env'
 )
 
+FULLCALENDAR_FOLDER = (BASE_DIR / 'django-fullcalendar')
+
+if FULLCALENDAR_FOLDER not in sys.path:
+    sys.path.insert(0, FULLCALENDAR_FOLDER)
+
+# Uncomment below to customize django-fullcalendar settings
+
+# FULLCALENDAR = {
+#     'css_url': '',
+#     'javascript_url': '',
+#     'jquery_url': '',
+#     'jquery_ui_url': '',
+# }
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,6 +55,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'schedule',
 ]
 
 MIDDLEWARE = [
