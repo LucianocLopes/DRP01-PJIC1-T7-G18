@@ -24,30 +24,23 @@
                 {% endif %}
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'scholl-profile' %}">Escola</a>
+                    <a class="nav-link" href="#">Escola</a>
                 </li>
                 {% if user.is_staff %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'theacher-profile' %}">Professores</a>
+                    <a class="nav-link" href="#">Professores</a>
                 </li>    
                 {% endif %}
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'alunos' %}">Alunos</a>
+                    <a class="nav-link" href="#">Alunos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'grade-escolar' %}">Grade Escolar</a>
+                    <a class="nav-link" href="#">Grade Escolar</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'account_logout' %}">Sair</a>
                 </li>
-                {% comment %} 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Professores</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'home-scholl' %}">Alunos</a>
-                </li> {% endcomment %}
                 {% comment %} <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Dropdown
