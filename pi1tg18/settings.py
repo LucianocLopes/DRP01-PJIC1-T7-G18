@@ -52,11 +52,16 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
 <<<<<<< HEAD:pi1tg18/settings.py
+<<<<<<< HEAD:pi1tg18/settings.py
 >>>>>>> 1d2908e (include libs, css and js important for tests):pi1tg18/settings/base.py
 =======
     'core',
 
 >>>>>>> a8c0174 (include core app and configs):pi1tg18/settings/base.py
+=======
+    'core',
+    'schedule',
+>>>>>>> bbda900 (correct acess test):pi1tg18/settings/base.py
 ]
 
 MIDDLEWARE = [
