@@ -5,6 +5,7 @@
 
 {% block content %}
 
+<<<<<<< HEAD
     <div class="container-fluid home-index p-5">
     <div class="container text-center p-5">
 
@@ -38,5 +39,40 @@
     </div>        
     </div>
     </div>
+=======
+    {% include 'parciais/_navbar.html' %}
+
+
+<div class="container mt-5" style="width: 70%;">
+    <div class="col">
+        <h1 class="text-center">Events Details</h1>
+        <div class="d-flex justify-content-center">
+            <table class="table table-striped mt-5" style="width: 50%">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                    {% for label, value in calendarevent.get_fields %}
+                        <tr>
+                            <td>{{  label| upper }}</td>
+                            <td>{{ value }}</td>
+                        </tr>
+                    {% endfor %}
+                        
+                </tbody>
+            </table>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <a href="{% url 'all' %}" class="d-block btn btn-primary btn-lg my-5">BACK</a>
+        </div>
+    </div>
+        
+</div>
+>>>>>>> ac9891b (corrections apps)
 
 {% endblock  %}

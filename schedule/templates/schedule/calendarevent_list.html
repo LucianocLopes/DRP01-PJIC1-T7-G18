@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+<<<<<<< HEAD
 {% load static %}
 {% load humanize %}
 
@@ -62,4 +63,50 @@
             </div>
         </div>
     </div>
+=======
+{% load static humanize fullcalendar_tags %}
+
+{% block content %}
+
+    {% include 'parciais/_navbar.html' %}
+
+    <div class="container d-flex mt-5" style="width: 70%;">
+        <div class="col">
+            <h1 class="text-center">My Events</h1>
+            <table class="table table-striped mt-5">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th class="text-center" scope="col">Title</th>
+                        <th class="text-center" scope="col">start</th>
+                        <th class="text-center" scope="col">end</th>
+                        <th class="text-center" scope="col">all day</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                    {% for event in calendarevent_list %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td class="ml-5"><a href="{% url 'event_detail' event.id %}">{{ event.title }}</a></td>
+                        <td class="text-center">{{ event.start }}</td>
+                        <td class="text-center">{{ event.end }}</td>
+                        <td class="text-center">{{ event.allday }}</td>
+                        <td><a href="{% url 'event_update' event.id %} ">Update</a></td>
+                        <td><a href="{% url 'event_delete' event.id %}">Delete</a></td>
+                    </tr>
+                {% endfor %}
+            
+                </tbody>
+            </table>    
+            <div class="d-flex justify-content-center">
+                <a href="{% url 'event_create' %}" class="d-block btn btn-primary btn-lg my-5">Add New</a>
+            </div>
+        </div>
+            
+    </div>
+
+>>>>>>> ac9891b (corrections apps)
 {% endblock content %}

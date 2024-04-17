@@ -56,6 +56,7 @@ def events_to_json(events_queryset):
         'id', 'title', 'start', 'end', 'all_day'))
     events_values = convert_field_names(events_values)
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     return json.dumps(events_values, default=date_handler)
 
@@ -63,6 +64,9 @@ def events_to_json(events_queryset):
 def calendar_options(event_url, default_view, options):
 =======
     print(events_values)
+=======
+
+>>>>>>> ac9891b (corrections apps)
     return json.dumps(events_values, default=date_handler)
 
 
