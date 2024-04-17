@@ -14,7 +14,6 @@ def convert_field_names(event_list):
     Converts atribute names from Python code convention to the
     attribute names used by FullCalendar 
     """
-    print(event_list)
     # for event in event_list:
     #     for key in event.keys():
     #         event[key] = event.pop(key)
