@@ -1,6 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpRequest, HttpResponse
+from django.views import View
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 from .models import CalendarEvent
+from .forms import CalendarEventForm
 from .util import events_to_json, calendar_options
 
 
@@ -18,7 +24,7 @@ OPTIONS = """{  locale: 'pt-br',
                 },
 
                 headerToolbar: {
-                    left: 'addEventButton',
+                    left: 'newButton',
                     center: 'title',
                 },
                 businessHours: {
@@ -34,6 +40,15 @@ OPTIONS = """{  locale: 'pt-br',
 
                 editable: true,
                 eventLimit: 6,
+                
+                customButtons: {
+                        newButton: {
+                        text: 'Novo',
+                        click: function() {
+                            alert('clicked the custom button!');
+                        }
+                    }
+                },
 
             }"""
 
@@ -75,11 +90,29 @@ def list_events(request):
     )
 
 
-def add_event(request):
-    start = request.GET.get('start', None)
-    end = request.GET.get('end', None)
-    title = request.GET.get('title', None)
-    event = CalendarEvent(name=str(title), start=start, end=end)
-    event.save
-    data = {}
-    return HttpResponse(events_to_json(data), content_tyoe="application/json")
+class EventBaseView(View):
+    model = CalendarEvent
+    templatename = 'schedule/crud/list.html'
+    fields = '__all__'
+    success_url = reverse_lazy('all')
+
+
+class EventListView(EventBaseView, ListView):
+    "list view"
+
+
+class EventDetailView(EventBaseView, DetailView):
+    'detailview'
+
+
+class EventCreateView(EventBaseView, CreateView):
+    'createview'
+    form = CalendarEventForm
+
+
+class EventUpdateView(EventBaseView, UpdateView):
+    'updadeview'
+
+
+class EventDeleteView(EventBaseView, DeleteView):
+    'deleteview'

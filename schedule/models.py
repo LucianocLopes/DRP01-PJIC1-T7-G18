@@ -20,5 +20,10 @@ class CalendarEvent(models.Model):
     def __unicode__(self):
         return self.title
 
+    def get_fields(self):
+        return [(field.verbose_name, field.value_from_object(self))
+                for field in self.__class__._meta.fields[1:]
+                ]
+
     def __str__(self) -> str:
         return self.title
