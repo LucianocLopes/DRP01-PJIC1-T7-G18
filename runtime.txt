@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 python-3.10.5
+=======
+python-3.12.2
+>>>>>>> 09e9fb2 (configs  for deploy)
