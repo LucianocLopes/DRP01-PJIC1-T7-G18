@@ -15,9 +15,12 @@ def convert_field_names(event_list):
     attribute names used by FullCalendar 
     """
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     print(event_list)
 >>>>>>> 16093fb (created app schedule, config and tests)
+=======
+>>>>>>> 7a3b3ad (new corrections apps base)
     # for event in event_list:
     #     for key in event.keys():
     #         event[key] = event.pop(key)

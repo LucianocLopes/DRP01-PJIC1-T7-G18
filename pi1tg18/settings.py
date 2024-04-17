@@ -18,6 +18,18 @@ from environ import Env
 >>>>>>> a8c0174 (include core app and configs):pi1tg18/settings/base.py
 from pathlib import Path
 
+<<<<<<< HEAD:pi1tg18/settings.py
+=======
+from django.contrib.messages import constants
+
+
+env = Env(
+    DEBUG=(bool, False),
+)
+
+print(env('DEBUG'))
+
+>>>>>>> 7a3b3ad (new corrections apps base):pi1tg18/settings/base.py
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -66,6 +78,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -147,6 +160,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
