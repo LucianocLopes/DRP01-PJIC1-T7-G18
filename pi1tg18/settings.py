@@ -11,9 +11,12 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 <<<<<<< HEAD:pi1tg18/settings.py
+<<<<<<< HEAD:pi1tg18/settings.py
 =======
 import sys
 
+=======
+>>>>>>> 7174e77 (add configs deployed):pi1tg18/settings/base.py
 from environ import Env
 >>>>>>> a8c0174 (include core app and configs):pi1tg18/settings/base.py
 from pathlib import Path
@@ -78,7 +81,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    # "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -98,7 +100,11 @@ ROOT_URLCONF = 'pi1tg18.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+<<<<<<< HEAD:pi1tg18/settings.py
         'DIRS': [],
+=======
+        'DIRS': ['templates/'],
+>>>>>>> 7174e77 (add configs deployed):pi1tg18/settings/base.py
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -161,13 +167,6 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
-STORAGES = {
-    "staticfiles": {
-        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-    },
-}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
