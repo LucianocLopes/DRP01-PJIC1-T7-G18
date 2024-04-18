@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+
+{% load static humanize %}
+
+{% block content %}
+
+    {% include 'parciais/_navbar.html' %}
+
+
+    <div class="container-md pt-2 pb-5" id='wrap'>
+        <div class="col">
+            <h1 class="text-center">Informações do Professor</h1>
+            <div class="d-flex justify-content-center">
+                <table class="table table-striped mt-5">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                        {% for label, value in teacher.get_fields %}
+                            <tr>
+                                <td>{{  label| upper }}</td>
+                                <td>{{ value }}</td>
+                            </tr>
+                        {% endfor %}
+                            
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-flex justify-content-center">
+                <a href="{% url 'teacher_all' %}" class="d-block btn btn-primary btn-lg my-5">Voltar</a>
+            </div>
+        </div>
+    </div>        
+
+
+{% endblock  %}

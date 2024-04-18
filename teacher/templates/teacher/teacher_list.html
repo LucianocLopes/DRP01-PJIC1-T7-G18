@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load static humanize %}
+
+{% block content %}
+
+    {% include 'parciais/_navbar.html' %}
+    <div class="container-md pt-2 pb-5" id='wrap'>
+        <div class="col">
+            <h1 class="text-center">Professores</h1>
+            <table class="table table-striped mt-5">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th class="text-center" scope="col">Nome</th>
+                        <th class="text-center" scope="col">Sobrenome</th>
+                        <th class="text-center" scope="col">Telefone</th>
+                        <th class="text-center" scope="col">E-mail</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                    {% for school in school_list %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td class="ml-5"><a href="{% url 'teacher_detail' teacher.id %}">{{ school.first_name }}</a></td>
+                        <td class="text-center">{{ teacher.last_name }}</td>
+                        <td class="text-center">({{ teacher.phone_ddd }}) {{ teacher.phone_number }}</td>
+                        <td class="text-center">{{ teacher.email }}</td>
+                        <td><a href="{% url 'school_update' teacher.id %} ">Alterar</a></td>
+                        <td><a href="{% url 'school_delete' teacher.id %}">Excluir</a></td>
+                    </tr>
+                {% endfor %}
+            
+                </tbody>
+            </table>    
+        </div>
+        <div class="d-flex justify-content-center">
+            <a href="{% url 'teacher_create' %}" class="d-block btn btn-primary btn-lg my-5 mx-2 my-2">Novo Cadastro</a>
+        </div>
+        <div class="col mt-5 image_school"></div>    
+    </div>
+
+{% endblock content %}

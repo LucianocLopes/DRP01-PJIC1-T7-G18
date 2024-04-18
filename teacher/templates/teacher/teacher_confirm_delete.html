@@ -1,0 +1,29 @@
+
+
+{% extends "base.html" %}
+
+
+{% load static humanize %}
+
+{% block content %}
+
+    {% include 'parciais/_navbar.html' %}
+
+    {% url 'teacher_all' as list_all %}
+    <div class="container-md pt-2 pb-5" id='wrap'>
+        <div class="container d-flex justify-content-center mt-5">
+            <div class="col mt-5 text-center">
+                <h1 class="mb-5">Excluir Escola</h1>
+
+                <p class="h5">Você deseja realmente excluir a escola?</p>
+                <h4 class="mt-5">{{ teacher.full_name }}</h4>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-primary btn-lg mx-3 my-3" value="Confirmar">
+                    <input type="submit" class="btn btn-danger btn-lg mx-3 my-3" onclick="window.location='{{ list_all }}'; return false;" value="Cancelar">
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
