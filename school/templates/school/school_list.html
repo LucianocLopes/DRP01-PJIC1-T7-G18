@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load static humanize %}
+
+{% block content %}
+
+    {% include 'parciais/_navbar.html' %}
+    <div class="container-md pt-2 pb-5" id='wrap'>
+        <div class="col">
+            <h1 class="text-center">Escola</h1>
+            <table class="table table-striped mt-5">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th class="text-center" scope="col">#Nome da Escola</th>
+                        <th class="text-center" scope="col">CNPJ</th>
+                        <th class="text-center" scope="col">Inscrição Secretaria</th>
+                        <th class="text-center" scope="col">E-mail</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                    {% for school in school_list %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td class="ml-5"><a href="{% url 'school_detail' school.id %}">{{ school.name }}</a></td>
+                        <td class="text-center">{{ school.cnpj_number }}</td>
+                        <td class="text-center">{{ school.school_number }}</td>
+                        <td class="text-center">{{ school.email }}</td>
+                        <td><a href="{% url 'school_update' school.id %} ">Alterar</a></td>
+                        <td><a href="{% url 'school_delete' school.id %}">Excluir</a></td>
+                    </tr>
+                {% endfor %}
+            
+                </tbody>
+            </table>    
+        </div>
+        <div class="col mt-5 image_school_2"></div>    
+    </div>
+
+{% endblock content %}

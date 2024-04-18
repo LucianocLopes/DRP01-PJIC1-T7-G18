@@ -3,21 +3,21 @@
 {% extends "base.html" %}
 
 
-{% load static humanize fullcalendar_tags %}
+{% load static humanize %}
 
 {% block content %}
 
     {% include 'parciais/_navbar.html' %}
 
-    {% url 'all' as list_all %}
+    {% url 'school_all' as list_all %}
     <div class="container-md pt-2 pb-5" id='wrap'>
         <div class="container d-flex justify-content-center mt-5" style="width: 50%;">
             <div class="col mt-5 text-center">
-                <h1 class="mb-5">Excluir Evento</h1>
+                <h1 class="mb-5">Excluir Escola</h1>
 
-                <p class="h5">Você deseja realmente excluir esse evento?</p>
-                <h4 class="mt-5">{{ calendarevent.title }}</h4>
-                <h5 class="my-1">Inicio {{ calendarevent.start }} e termino {{ calendarevent.end }}</h5>
+                <p class="h5">Você deseja realmente excluir a escola?</p>
+                <h4 class="mt-5">{{ school.name }}</h4>
+                <h5 class="my-1">CNPJ: {{ school.cnpj_number }} | Inscrição Secretaria: {{ school.school_number }}</h5>
                 <form action="" method="POST">
                     {% csrf_token %}
                     <input type="submit" class="btn btn-primary btn-lg" value="Confirmar" style="margin-right: 30px; margin-top: 30px;">
