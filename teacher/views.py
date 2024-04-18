@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
@@ -37,3 +38,44 @@ class TeacherCreateView(CreateView):
     model = Teacher
     template_name = "teacher/teacher_form.html"
     form_class = TeacherForm
+=======
+from django.views import View
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+
+from .models import Teacher
+
+from .forms import TeacherForm
+
+
+class TeacherBaseView(View):
+    model = Teacher
+    templatename = 'teacher/teacher_list.html'
+    fields = '__all__'
+    success_url = reverse_lazy('teacher_all')
+
+
+class TeacherListView(TeacherBaseView, ListView):
+    "list view"
+
+
+class TeacherDetailView(TeacherBaseView, DetailView):
+    'detailview'
+    form = TeacherForm
+
+
+class TeacherCreateView(TeacherBaseView, CreateView):
+    'createview'
+    form = TeacherForm
+
+
+class TeacherUpdateView(TeacherBaseView, UpdateView):
+    'updadeview'
+    form = TeacherForm
+
+
+class TeacherDeleteView(TeacherBaseView, DeleteView):
+    'deleteview'
+>>>>>>> ee2e9db (add, configurate and edit app teacher)

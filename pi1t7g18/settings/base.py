@@ -86,6 +86,7 @@ INSTALLED_APPS = [
 >>>>>>> 70b58ba (add app school and config pages):pi1tg18/settings/base.py
     'schedule',
     'school',
+    'teacher',
 ]
 
 MIDDLEWARE = [

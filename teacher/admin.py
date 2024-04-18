@@ -1,5 +1,6 @@
 from django.contrib import admin
 
+<<<<<<< HEAD
 from .models import *
 
 # INLINE
@@ -30,3 +31,13 @@ class TeacherAdmin(admin.ModelAdmin):
         AddressTeacherInline,
     ]
 
+=======
+from .models import Teacher
+
+
+@admin.register(Teacher)
+class TeacherAdmin(admin.ModelAdmin):
+    '''Admin View for Teacher'''
+
+    list_display = ('full_name', 'email', 'phone_number')
+>>>>>>> ee2e9db (add, configurate and edit app teacher)
