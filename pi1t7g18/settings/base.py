@@ -61,7 +61,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+<<<<<<< HEAD:pi1t7g18/settings/base.py
     # 3td APPS
+=======
+    # 3td apps
+>>>>>>> 70b58ba (add app school and config pages):pi1tg18/settings/base.py
     'allauth',
     'allauth.account',
 <<<<<<< HEAD:pi1t7g18/settings/base.py
@@ -74,8 +78,14 @@ INSTALLED_APPS = [
 =======
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+<<<<<<< HEAD:pi1t7g18/settings/base.py
 >>>>>>> 16093fb (created app schedule, config and tests):pi1tg18/settings/base.py
+=======
+    # My Apps
+    'core',
+>>>>>>> 70b58ba (add app school and config pages):pi1tg18/settings/base.py
     'schedule',
+    'school',
 ]
 
 MIDDLEWARE = [

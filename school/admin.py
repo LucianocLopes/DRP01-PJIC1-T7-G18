@@ -1,5 +1,6 @@
 from django.contrib import admin
 
+<<<<<<< HEAD
 from .models import *
 
 # INLINE
@@ -43,10 +44,25 @@ class SchoolYearInline(admin.TabularInline):
 
 
 # ADMIN_VIEW
+=======
+from .models import School, StructSchool
+
+
+class StructSchoolInline(admin.TabularInline):
+    '''Tabular Inline View for StructSchool'''
+
+    model = StructSchool
+    min_num = 1
+    max_num = 20
+    extra = 1
+
+
+>>>>>>> 70b58ba (add app school and config pages)
 @admin.register(School)
 class SchoolAdmin(admin.ModelAdmin):
     '''Admin View for School'''
 
+<<<<<<< HEAD
     list_display = ('name','fantasy_name', 'email', )
     inlines = [
         PhoneSchoolInline,
@@ -68,3 +84,9 @@ class PhoneSchoolAdmin(admin.ModelAdmin):
     '''Admin View for School'''
 
     list_display = ('school','phone_type','get_phone',)
+=======
+    list_display = ('id', 'name', 'email')
+    inlines = [
+        StructSchoolInline,
+    ]
+>>>>>>> 70b58ba (add app school and config pages)

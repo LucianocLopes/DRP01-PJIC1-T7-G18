@@ -71,15 +71,15 @@
     {% include 'parciais/_navbar.html' %}
     <div class="container-md pt-2 pb-5" id='wrap'>
         <div class="col">
-            <h1 class="text-center">My Events</h1>
+            <h1 class="text-center">Lista de Eventos</h1>
             <table class="table table-striped mt-5">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th class="text-center" scope="col">Title</th>
-                        <th class="text-center" scope="col">start</th>
-                        <th class="text-center" scope="col">end</th>
-                        <th class="text-center" scope="col">all day</th>
+                        <th class="text-center" scope="col">Nome do Evento</th>
+                        <th class="text-center" scope="col">Inicio</th>
+                        <th class="text-center" scope="col">Termino</th>
+                        <th class="text-center" scope="col">Todo o Dia</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -92,7 +92,7 @@
                         <td class="ml-5"><a href="{% url 'event_detail' event.id %}">{{ event.title }}</a></td>
                         <td class="text-center">{{ event.start }}</td>
                         <td class="text-center">{{ event.end }}</td>
-                        <td class="text-center">{{ event.allday }}</td>
+                        <td class="text-center">{{ event.all_day }}</td>
                         <td><a href="{% url 'event_update' event.id %} ">Update</a></td>
                         <td><a href="{% url 'event_delete' event.id %}">Delete</a></td>
                     </tr>
@@ -101,7 +101,8 @@
                 </tbody>
             </table>    
             <div class="d-flex justify-content-center">
-                <a href="{% url 'event_create' %}" class="d-block btn btn-primary btn-lg my-5">Add New</a>
+                <a href="{% url 'event_create' %}" class="d-block btn btn-primary btn-lg my-5 mx-2 my-2">Novo Evento</a>
+                <a href="{% url 'scheduling' %}" class="d-block btn btn-primary btn-lg my-5 mx-2 my-2">Agenda</a>
             </div>
         </div>
             

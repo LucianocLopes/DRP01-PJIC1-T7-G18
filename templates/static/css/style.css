@@ -600,5 +600,27 @@ div.image-404 {
     background-position: center;
     background-repeat: no-repeat;
 
+<<<<<<< HEAD
 >>>>>>> a8c0174 (include core app and configs)
+=======
+}
+
+/* SCHOLL IMGAGE */
+div.col.mt-5.image_school {
+    height: 75vh;
+    background-size: cover;
+    background-image: url(../img/escola/struct_school.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+div.col.mt-5.image_school_2 {
+    height: 40vh;
+    background-size: cover;
+    background-image: url(../img/escola/School.png);
+    background-position: center;
+    background-repeat: no-repeat;
+
+>>>>>>> 70b58ba (add app school and config pages)
 }

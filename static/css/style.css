@@ -205,3 +205,22 @@ div.image-404 {
     background-repeat: no-repeat;
 
 }
+
+/* SCHOLL IMGAGE */
+div.col.mt-5.image_school {
+    height: 75vh;
+    background-size: cover;
+    background-image: url(../img/escola/struct_school.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+div.col.mt-5.image_school_2 {
+    height: 40vh;
+    background-size: cover;
+    background-image: url(../img/escola/School.png);
+    background-position: center;
+    background-repeat: no-repeat;
+
+}

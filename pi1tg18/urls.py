@@ -37,6 +37,8 @@ urlpatterns = [
     path("", include('core.urls')),
     path('accounts/', include('allauth.urls')),
     path("schedule/", include('schedule.urls')),
+    path("school/", include('school.urls')),
     path('admin/', admin.site.urls),
-    path("all_events/", all_events, name="all_events")
+    path("all_events/", all_events, name="all_events"),
+
 ]
