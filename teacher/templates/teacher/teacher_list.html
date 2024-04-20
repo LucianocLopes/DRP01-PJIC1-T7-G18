@@ -12,8 +12,8 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th class="text-center" scope="col">Titulo</th>
                         <th class="text-center" scope="col">Nome</th>
-                        <th class="text-center" scope="col">Sobrenome</th>
                         <th class="text-center" scope="col">Telefone</th>
                         <th class="text-center" scope="col">E-mail</th>
                         <th></th>
@@ -22,24 +22,40 @@
                 </thead>
                 <tbody>
                 
-                    {% for school in school_list %}
+                    {% for teacher in teacher_list %}
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
-                        <td class="ml-5"><a href="{% url 'teacher_detail' teacher.id %}">{{ school.first_name }}</a></td>
-                        <td class="text-center">{{ teacher.last_name }}</td>
+                        {% if perms.teacher.view_teatcher %}
+                            <td class="ml-5"><a href="{% url 'teacher_detail' teacher.id %}">Prof. {{ teacher.first_name }}</a></td>
+                        {% else %}
+                            <td clSass="ml-5">Prof. {{ teacher.first_name }}</td>
+                        {% endif %}
+                        <td class="text-center">{{ teacher.full_name }}</td>
                         <td class="text-center">({{ teacher.phone_ddd }}) {{ teacher.phone_number }}</td>
                         <td class="text-center">{{ teacher.email }}</td>
-                        <td><a href="{% url 'school_update' teacher.id %} ">Alterar</a></td>
-                        <td><a href="{% url 'school_delete' teacher.id %}">Excluir</a></td>
+                        
+                        {% if perms.teacher.change_teacher %}
+                            <td><a href="{% url 'teacher_update' teacher.id %} ">Alterar</a></td>
+                        {% endif %}
+
+                        {% if perms.teacher.delete_teacher %}
+                           <td><a href="{% url 'teacher_delete' teacher.id %}">Excluir</a></td>
+                        {% endif %}
+                        
                     </tr>
                 {% endfor %}
             
                 </tbody>
             </table>    
         </div>
-        <div class="d-flex justify-content-center">
-            <a href="{% url 'teacher_create' %}" class="d-block btn btn-primary btn-lg my-5 mx-2 my-2">Novo Cadastro</a>
-        </div>
+        {% if perms.teacher.add_teacher %}
+            <div class="d-flex justify-content-center">
+                <a href="{% url 'teacher_create' %}" class="d-block btn btn-primary btn-lg my-5 mx-2 my-2">Novo Cadastro</a>
+            </div>
+        {% else %}
+            não tem permissões
+        {% endif %}
+            
         <div class="col mt-5 image_school"></div>    
     </div>
 
