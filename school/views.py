@@ -91,12 +91,14 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
+from django.contrib.auth.mixins import PermissionRequiredMixin
+
 from .models import School
 
 from .forms import SchoolForm
 
 
-class SchoolBaseView(View):
+class SchoolBaseView(PermissionRequiredMixin, View):
     model = School
     templatename = 'school/school_list.html'
     fields = '__all__'
@@ -105,23 +107,31 @@ class SchoolBaseView(View):
 
 class SchoolListView(SchoolBaseView, ListView):
     "list view"
+    permission_required = 'school.view_school'
 
 
 class SchoolDetailView(SchoolBaseView, DetailView):
     'detailview'
     form = SchoolForm
+    permission_required = 'school.change_school'
 
 
 class SchoolCreateView(SchoolBaseView, CreateView):
     'createview'
     form = SchoolForm
+    permission_required = 'school.add_school'
 
 
 class SchoolUpdateView(SchoolBaseView, UpdateView):
     'updadeview'
     form = SchoolForm
+    permission_required = 'school.change_school'
 
 
 class SchoolDeleteView(SchoolBaseView, DeleteView):
     'deleteview'
+<<<<<<< HEAD
 >>>>>>> 70b58ba (add app school and config pages)
+=======
+    permission_required = 'school.delete_school'
+>>>>>>> 4d331fd (corrections pages and acesses permissions)

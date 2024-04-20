@@ -10,6 +10,9 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4d331fd (corrections pages and acesses permissions)
 
 from django.contrib.auth.mixins import PermissionRequiredMixin
 
@@ -70,33 +73,38 @@ from .util import events_to_json, calendar_options
 # from a separate file or anywhere you want
 
 OPTIONS = """{  locale: 'pt-br',
+
                 weekNumbers: true,
                 
-
                 views: {
                     timeGrid: {
-                        dayMaxEventRows: 4 // adjust to 6 only for timeGridWeek/timeGridDay
+                        dayMaxEventRows: 6
                     }
                 },
 
                 headerToolbar: {
-                    left: 'newButton',
-                    center: 'title',
+                    left: '',
+                    center: '',
                 },
-                businessHours: {
-                    // days of week. an array of zero-based day of week integers (0=Sunday)
-                    daysOfWeek: [ 1, 2, 3, 4, 5], //
 
-                    startTime: '08:00', // a start time (10am in this example)
-                    endTime: '20:00', // an end time (6pm in this example)
+                businessHours: {
+                
+                    daysOfWeek: [ 1, 2, 3, 4, 5],
+                
+                    startTime: '07:00',
+                    endTime: '12:00',
+                    
+                    startTime: '13:00',
+                    endTime: '18:00', 
                 },
 
                 selectable: true,
                 selectMirror: true,
 
                 editable: true,
-                eventLimit: 6,
+                eventLimit: 3,
                 
+<<<<<<< HEAD
                 customButtons: {
                         newButton: {
                         text: 'Novo',
@@ -107,6 +115,8 @@ OPTIONS = """{  locale: 'pt-br',
                 },
 
 >>>>>>> 16093fb (created app schedule, config and tests)
+=======
+>>>>>>> 4d331fd (corrections pages and acesses permissions)
             }"""
 
 
@@ -149,7 +159,7 @@ def day_events(request):
 =======
     event_url = 'all_events/'
     initial_grid = 'dayGridDay'
-    return render(request, 'schedule/day_events.html', {
+    return render(request, 'schedule/scheduling.html', {
         'calendar_config_options': calendar_options(event_url, initial_grid, OPTIONS)}
 >>>>>>> 16093fb (created app schedule, config and tests)
     )
@@ -167,7 +177,7 @@ def week_events(request):
 =======
     event_url = 'all_events/'
     initial_grid = 'dayGridWeek'
-    return render(request, 'schedule/week_events.html', {
+    return render(request, 'schedule/scheduling.html', {
         'calendar_config_options': calendar_options(event_url, initial_grid, OPTIONS)}
 >>>>>>> 16093fb (created app schedule, config and tests)
     )
@@ -225,11 +235,12 @@ class EventDeleteView(EventBaseView, DeleteView):
 =======
     event_url = 'all_events/'
     initial_grid = 'listWeek'
-    return render(request, 'schedule/list_events.html', {
+    return render(request, 'schedule/scheduling.html', {
         'calendar_config_options': calendar_options(event_url, initial_grid, OPTIONS)}
     )
 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 def add_event(request):
     start = request.GET.get('start', None)
@@ -242,29 +253,39 @@ def add_event(request):
 >>>>>>> 16093fb (created app schedule, config and tests)
 =======
 class EventBaseView(View):
+=======
+class EventBaseView(PermissionRequiredMixin, View):
+>>>>>>> 4d331fd (corrections pages and acesses permissions)
     model = CalendarEvent
-    templatename = 'schedule/crud/list.html'
     fields = '__all__'
     success_url = reverse_lazy('all')
 
 
 class EventListView(EventBaseView, ListView):
     "list view"
+    permission_required = 'calendarevent.view_calendarevent'
 
 
 class EventDetailView(EventBaseView, DetailView):
     'detailview'
+    permission_required = 'calendarevent.change_calendarevent'
 
 
 class EventCreateView(EventBaseView, CreateView):
     'createview'
     form = CalendarEventForm
+    permission_required = 'calendarevent.add_calendarevent'
 
 
 class EventUpdateView(EventBaseView, UpdateView):
     'updadeview'
+    permission_required = 'calendarevent.add_calendarevent'
 
 
 class EventDeleteView(EventBaseView, DeleteView):
     'deleteview'
+<<<<<<< HEAD
 >>>>>>> ac9891b (corrections apps)
+=======
+    permission_required = 'calendarevent.delete_calendarevent'
+>>>>>>> 4d331fd (corrections pages and acesses permissions)
