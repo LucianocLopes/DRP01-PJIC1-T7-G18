@@ -39,6 +39,7 @@ urlpatterns = [
     path("schedule/", include('schedule.urls')),
     path("school/", include('school.urls')),
     path("teacher/", include('teacher.urls')),
+    path("student/", include('student.urls')),
     path('admin/', admin.site.urls),
     path("all_events/", all_events, name="all_events"),
 

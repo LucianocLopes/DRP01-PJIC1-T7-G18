@@ -8,6 +8,16 @@
 <meta name="generator" content="">
 
 {% fullcalendar_javascript %}
+{% fullcalendar_core %}
+{% fullcalendar_core_ptbr %}
+{% fullcalendar_daygrid %}
+{% fullcalendar_interaction %}
+{% fullcalendar_list %}
+{% fullcalendar_moment %}
+{% fullcalendar_luxon %}
+{% fullcalendar_moment_timezone %}
+{% fullcalendar_rrule %}
+{% fullcalendar_timegrid %}
 
 {% calendar_init calendar_config_options %}
 
@@ -20,6 +30,14 @@
 <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
 
 <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+
+<link href="{% static 'vendor/fullcalendar/packages/core/main.min.css' %}" rel="stylesheet">
+
+<link href="{% static 'vendor/fullcalendar/packages/daygrid/main.css' %}" rel="stylesheet">
+
+<link href="{% static 'vendor/fullcalendar/packages/timegrid/main.css' %}" rel="stylesheet">
+
+<link href="{% static 'vendor/fullcalendar/packages/list/main.css' %}" rel="stylesheet">
 
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
