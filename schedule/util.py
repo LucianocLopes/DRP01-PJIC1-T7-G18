@@ -55,15 +55,16 @@ def events_to_json(events_queryset):
     return json.dumps(events_values, default=date_handler)
 
 
-def calendar_options(event_url, initial_grid, options):
+def calendar_options(event_url, default_view, options):
     """
     Builds the Fullcalendar options array
 
     This function receives two strings. event_url is the url that returns a JSON array containing
     the calendar events. options is a JSON string with all the other options.
     """
-    event_url_option = 'events: "/%s", initialView: "%s" ' % (
-        event_url, initial_grid)
+    default_view = default_view
+    event_url_option = 'events: "/%s", plugins: ["interaction", "dayGrid", "timeGrid", "core", "list", "luxon", "moment", "moment-timezone", "rrule"], defaultView: "%s"' % (
+        event_url, default_view)
     s = options.strip()
     if s is not None and '{' in s:
         pos = s.index('{') + 1

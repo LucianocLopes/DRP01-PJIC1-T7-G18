@@ -1,8 +1,14 @@
 <script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
+        var initialTimeZone = 'local';
+        var timeZoneSelectorEl = document.getElementById('time-zone-selector');
+        var loadingEl = document.getElementById('loading');
         var calendarEl = document.getElementById('calendar');
+
         var calendar = new FullCalendar.Calendar(calendarEl, 
-        {{ calendar_config_options }}
+
+            {{ calendar_config_options }}
+
         );
         calendar.render();
     });

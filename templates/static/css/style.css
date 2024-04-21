@@ -224,3 +224,19 @@ div.col.mt-5.image_school_2 {
     background-repeat: no-repeat;
 
 }
+
+div.col.mt-5.image_school_3 {
+    height: 40vh;
+    background-size: cover;
+    background-image: url(../img/escola/school_students.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.image#image_event_edit {
+    height: 40vh;
+    background-image: url(../img/escola/edit_event_schedule.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

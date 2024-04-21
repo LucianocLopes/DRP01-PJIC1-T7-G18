@@ -7,12 +7,12 @@
     {% include 'parciais/_navbar.html' %}
     <div class="container-md pt-2 pb-5" id='wrap'>
         <div class="col">
-            <h1 class="text-center">Escola</h1>
+            <h1 class="text-center">Informações da Escola</h1>
             <table class="table table-striped mt-5">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th class="text-center" scope="col">#Nome da Escola</th>
+                        <th class="text-center" scope="col">Nome da Escola</th>
                         <th class="text-center" scope="col">CNPJ</th>
                         <th class="text-center" scope="col">Inscrição Secretaria</th>
                         <th class="text-center" scope="col">E-mail</th>
@@ -36,15 +36,16 @@
             
                 </tbody>
             </table>    
-            <div class="container d-flex justify-content-center">
-                <input type="submit" class="btn btn-secundary btn-lg my-2 mx-2 p-1" value="Estruturas">
-                <input type="submit" class="btn btn-secundary btn-lg my-2 mx-2 p-1" value="Diciplinas">
-                <input type="submit" class="btn btn-secundary btn-lg my-2 mx-2 p-1" value="Graduações">
-                <input type="submit" class="btn btn-secundary btn-lg my-2 mx-2 p-1" value="Professores">
-            </div>   
         </div>
             
-        <div class="col mt-5 image_school_2"></div>    
+        <div class="col mt-5 image_school_2"></div>            
+        <div class="container d-flex justify-content-center mt-4">
+            <a href="{% url 'struct_all' %}"><input type="button" class="btn btn-secondary mx-1 " value="Estruturas"></a>
+            <a href="#"><input type="button" class="btn btn-secondary mx-1" value="Diciplinas"></a>
+            <a href="#"><input type="button" class="btn btn-secondary mx-1" value="Graduações"></a>
+            <a href="#"><input type="button" class="btn btn-secondary mx-1" value="Classes"></a>
+        </div>   
+    
     </div>
 
 {% endblock content %}
