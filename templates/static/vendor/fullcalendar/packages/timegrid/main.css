@@ -8,12 +8,20 @@
 }
 
 .fc-timeGrid-view .fc-day-grid .fc-row {
+<<<<<<< HEAD
   min-height: 4em;
+=======
+  min-height: 3em;
+>>>>>>> 98c1c6d (corrects on apps)
   /* all-day section will never get shorter than this */
 }
 
 .fc-timeGrid-view .fc-day-grid .fc-row .fc-content-skeleton {
+<<<<<<< HEAD
   padding-bottom: 1.5em;
+=======
+  padding-bottom: 1em;
+>>>>>>> 98c1c6d (corrects on apps)
   /* give space underneath events for clicking/selecting days */
 }
 
@@ -23,7 +31,11 @@
   /* .fc to overcome default cell styles */
   vertical-align: middle;
   padding: 0 4px;
+<<<<<<< HEAD
   white-space: 20%;
+=======
+  white-space: nowrap;
+>>>>>>> 98c1c6d (corrects on apps)
 }
 
 .fc-ltr .fc-axis {

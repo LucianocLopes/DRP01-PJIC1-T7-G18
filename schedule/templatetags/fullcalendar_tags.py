@@ -1,11 +1,15 @@
 from django import template
 from django.utils.safestring import mark_safe
 <<<<<<< HEAD
+<<<<<<< HEAD
 from schedule.fullcalendar import *
 
 =======
 from schedule.fullcalendar import javascript_url
 >>>>>>> 16093fb (created app schedule, config and tests)
+=======
+from schedule.fullcalendar import javascript_url, core_url, core_ptbr_url, daygrid_url, interaction_url, list_url, luxon_url, moment_url, moment_timezone_url, rrule_url, timegrid_url
+>>>>>>> 98c1c6d (corrects on apps)
 
 register = template.Library()
 
@@ -29,6 +33,9 @@ def fullcalendar_javascript_url():
 def fullcalendar_javascript():
     url = fullcalendar_javascript_url()
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 98c1c6d (corrects on apps)
     return mark_safe("<script src='/static/%s'></script>" % url)
 
 
@@ -140,6 +147,9 @@ def fullcalendar_timegrid_url():
 def fullcalendar_timegrid():
     url = fullcalendar_timegrid_url()
     return mark_safe("<script src='/static/%s'></script>" % url)
+<<<<<<< HEAD
 =======
     return mark_safe("<script src='%s'></script>" % url)
 >>>>>>> 16093fb (created app schedule, config and tests)
+=======
+>>>>>>> 98c1c6d (corrects on apps)

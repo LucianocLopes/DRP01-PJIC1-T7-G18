@@ -15,11 +15,21 @@
 
 =======
 <script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
+        var initialTimeZone = 'local';
+        var timeZoneSelectorEl = document.getElementById('time-zone-selector');
+        var loadingEl = document.getElementById('loading');
         var calendarEl = document.getElementById('calendar');
+
         var calendar = new FullCalendar.Calendar(calendarEl, 
+<<<<<<< HEAD
         {{ calendar_config_options }}
 >>>>>>> 16093fb (created app schedule, config and tests)
+=======
+
+            {{ calendar_config_options }}
+
+>>>>>>> 98c1c6d (corrects on apps)
         );
         calendar.render();
     });

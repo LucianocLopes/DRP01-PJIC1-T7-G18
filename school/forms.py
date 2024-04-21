@@ -21,7 +21,7 @@ class SchoolForm(forms.ModelForm):
         fields = '__all__'
 
 
-class StructSchollForm(forms.ModelForm):
+class StructSchoolForm(forms.ModelForm):
 
     class Meta:
         model = StructSchool

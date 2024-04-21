@@ -19,10 +19,14 @@ urlpatterns = [
     path("week_events/", week_events, name="week_events"),
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path("events/", EventListView.as_view(), name="event_all"),
 =======
     path("events/", EventListView.as_view(), name="all"),
 >>>>>>> ac9891b (corrections apps)
+=======
+    path("events/", EventListView.as_view(), name="event_all"),
+>>>>>>> 98c1c6d (corrects on apps)
     path('events/<int:pk>/detail', EventDetailView.as_view(), name='event_detail'),
     path('events/create/', EventCreateView.as_view(), name='event_create'),
     path('events/<int:pk>/update/', EventUpdateView.as_view(), name='event_update'),
