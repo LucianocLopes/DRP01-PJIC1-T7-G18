@@ -34,10 +34,11 @@
                 </li>    
                 {% endif %}
                     
-                    
+                {% if perms.student.view_student %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Alunos</a>
+                    <a class="nav-link" href="{% url 'student_all' %}">Alunos</a>
                 </li>
+                {% endif %}
                
                 <li class="nav-item">
                     <a class="nav-link" href="#">Grade Escolar</a>

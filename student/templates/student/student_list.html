@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% load static humanize %}
+
+{% block content %}
+
+    {% include 'parciais/_navbar.html' %}
+    <div class="container-md pt-2 pb-5" id='wrap'>
+        <div class="col">
+            <h1 class="text-center">Alunos</h1>
+            <table class="table table-striped mt-5">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th class="text-center" scope="col">Nome</th>
+                        <th class="text-center" scope="col">Mãe</th>
+                        <th class="text-center" scope="col">Pai</th>
+                        <th class="text-center" scope="col">Telefone</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                    {% for st in student_list %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        {% if perms.student.view_student %}
+                            <td class="ml-5"><a href="{% url 'student_detail' st.id %}">{{ st.first_name }}</a></td>
+                        {% else %}
+                            <td clSass="ml-5">Prof. {{ teacher.first_name }}</td>
+                        {% endif %}
+                        <td class="text-center">{{ st.mother_name }}</td>
+                        <td class="text-center">{{ st.father_name }}</td>
+                        <td class="text-center">{{ st.phone_number }}</td>
+                        {% if perms.student.change_student %}
+                            <td><a href="{% url 'student_update' st.id %} ">Alterar</a></td>
+                        {% endif %}
+                        {% if perms.student.delete_student %}                 
+                            <td><a href="{% url 'student_delete' st.id %}">Excluir</a></td>
+                        {% endif %}     
+                    </tr>
+                {% endfor %}
+            
+                </tbody>
+            </table>
+        {% if perms.teacher.add_teacher %}        
+            <div class="d-flex justify-content-center">
+                <a href="{% url 'student_create' %}" class="d-block btn btn-primary btn-lg my-5 mx-2 my-2">Novo Cadastro</a>
+            </div>
+        {% else %}
+            não tem permissões
+        {% endif %}
+    
+            <div class="container d-flex justify-content-center">
+                <input type="submit" class="btn btn-secundary btn-lg my-2 mx-2 p-1" value="Estruturas">
+                <input type="submit" class="btn btn-secundary btn-lg my-2 mx-2 p-1" value="Diciplinas">
+                <input type="submit" class="btn btn-secundary btn-lg my-2 mx-2 p-1" value="Graduações">
+                <input type="submit" class="btn btn-secundary btn-lg my-2 mx-2 p-1" value="Professores">
+            </div>   
+        </div>            
+        <div class="col mt-5 image_school_3"></div>    
+    </div>
+
+
+{% endblock content %}
