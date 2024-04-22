@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% load static humanize %}
+
+{% block content %}
+
+    {% include 'parciais/_navbar.html' %}
+    <div class="container-md pt-2 pb-5" id='wrap'>
+        <div class="col">
+            <h1 class="text-center">Graduações</h1>
+            <table class="table table-striped mt-5">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th class="text-center" scope="col">Graduação</th>
+                        <th class="text-center" scope="col">Duração Total</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                    {% for graduation in graduation_list %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        {% if perms.graduation.view_graduation %}
+                            <td class="ml-5"><a href="{% url 'graduation_detail' graduation.id %}">{{ graduation.name }}</a></td>
+                        {% else %}
+                            <td clSass="ml-5">{{ graduation.name }}</td>
+                        {% endif %}
+                        <td class="text-center">{{ graduation.duration_hours }}</td>
+                        
+                        {% if perms.graduation.change_graduation %}
+                            <td><a href="{% url 'graduation_update' graduation.id %} ">Alterar</a></td>
+                        {% endif %}
+
+                        {% if perms.graduation.delete_graduation %}
+                           <td><a href="{% url 'graduation_delete' graduation.id %}">Excluir</a></td>
+                        {% endif %}
+                        
+                    </tr>
+                {% endfor %}
+            
+                </tbody>
+            </table>    
+        </div>
+        {% if perms.graduation.add_graduation %}
+            <div class="d-flex justify-content-center">
+                <a href="{% url 'graduation_create' %}" class="d-block btn btn-primary btn-lg my-5 mx-2 my-2">Novo Cadastro</a>
+            </div>
+        {% else %}
+            não tem permissões
+        {% endif %}
+            
+        <div class="col mt-5 image_school"></div>    
+    </div>
+
+{% endblock content %}
