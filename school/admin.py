@@ -20,3 +20,10 @@ class SchoolAdmin(admin.ModelAdmin):
     inlines = [
         StructSchoolInline,
     ]
+    exclude = ('user',)
+
+    def save_model(self, request, obj, form, change):
+        if not change:
+            obj.user = request.user
+            obj.save()
+        super(SchoolAdmin, self).save_model(request, obj, form, change)

@@ -34,6 +34,10 @@ class StudentCreateView(StudentBaseView, CreateView):
     form = StudentForm
     permission_required = 'student.add_student'
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
 
 class StudentUpdateView(StudentBaseView, UpdateView):
     'updadeview'

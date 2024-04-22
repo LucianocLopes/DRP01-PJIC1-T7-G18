@@ -33,6 +33,10 @@ class SchoolCreateView(SchoolBaseView, CreateView):
     form_class = SchoolForm
     permission_required = 'school.add_school'
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
 
 class SchoolUpdateView(SchoolBaseView, UpdateView):
     'updadeview'

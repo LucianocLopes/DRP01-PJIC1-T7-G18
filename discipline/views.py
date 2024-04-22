@@ -32,6 +32,10 @@ class DisciplineCreateView(DisciplineBaseView, CreateView):
     'createview'
     permission_required = 'discipline.add_discipline'
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
 
 class DisciplineUpdateView(DisciplineBaseView, UpdateView):
     'updadeview'
@@ -63,6 +67,10 @@ class GraduationDetailView(GraduationBaseView, DetailView):
 class GraduationCreateView(GraduationBaseView, CreateView):
     'createview'
     permission_required = 'graduation.add_graduation'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 class GraduationUpdateView(GraduationBaseView, UpdateView):

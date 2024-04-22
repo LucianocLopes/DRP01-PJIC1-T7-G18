@@ -25,6 +25,12 @@ class Discipline(TimeStamp):
         """Unicode representation of Discipline."""
         return self.name.title()
 
+    def save_model(self, request, obj, form, change):
+        if not change:
+            obj.user = request.user
+            obj.save()
+        super(Discipline, self).save_model(request, obj, form, change)
+
 
 class Graduation(TimeStamp):
 
@@ -50,11 +56,17 @@ class Graduation(TimeStamp):
 
         result = Graduation.objects.filter(disc__graduation=self.id).annotate(
             All_hours=models.Sum('disc__duration'))
+        if result:
+            for num in result:
+                hours = num.All_hours
 
-        for num in result:
-            hours = num.All_hours
-
-        return hours
+            return hours
 
     def __str__(self):
         return self.name.title()
+
+    def save_model(self, request, obj, form, change):
+        if not change:
+            obj.user = request.user
+            obj.save()
+        super(Graduation, self).save_model(request, obj, form, change)

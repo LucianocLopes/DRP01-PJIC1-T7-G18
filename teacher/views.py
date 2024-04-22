@@ -14,8 +14,8 @@ from .forms import TeacherForm
 class TeacherBaseView(PermissionRequiredMixin, View):
     model = Teacher
     templatename = 'teacher/teacher_list.html'
-    fields = '__all__'
     success_url = reverse_lazy('teacher_all')
+    form_class = TeacherForm
 
 
 class TeacherListView(TeacherBaseView, ListView):
@@ -25,19 +25,20 @@ class TeacherListView(TeacherBaseView, ListView):
 
 class TeacherDetailView(TeacherBaseView, DetailView):
     'detailview'
-    form = TeacherForm
     permission_required = 'teacher.change_teacher'
 
 
 class TeacherCreateView(TeacherBaseView, CreateView):
     'createview'
-    form = TeacherForm
     permission_required = 'teacher.add_teacher'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 class TeacherUpdateView(TeacherBaseView, UpdateView):
     'updadeview'
-    form = TeacherForm
     permission_required = 'teacher.change_teacher'
 
 

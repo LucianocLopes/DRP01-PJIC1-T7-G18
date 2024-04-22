@@ -44,3 +44,9 @@ class Student(TimeStamp):
         return [(field.verbose_name, field.value_from_object(self))
                 for field in self.__class__._meta.fields[1:]
                 ]
+
+    def save_model(self, request, obj, form, change):
+        if not change:
+            obj.user = request.user
+            obj.save()
+        super(Student, self).save_model(request, obj, form, change)
