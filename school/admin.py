@@ -89,4 +89,14 @@ class PhoneSchoolAdmin(admin.ModelAdmin):
     inlines = [
         StructSchoolInline,
     ]
+<<<<<<< HEAD
 >>>>>>> 70b58ba (add app school and config pages)
+=======
+    exclude = ('user',)
+
+    def save_model(self, request, obj, form, change):
+        if not change:
+            obj.user = request.user
+            obj.save()
+        super(SchoolAdmin, self).save_model(request, obj, form, change)
+>>>>>>> 8b7b00c (corrections in apps views, forms and templates)

@@ -40,4 +40,14 @@ class TeacherAdmin(admin.ModelAdmin):
     '''Admin View for Teacher'''
 
     list_display = ('full_name', 'email', 'phone_number')
+<<<<<<< HEAD
 >>>>>>> ee2e9db (add, configurate and edit app teacher)
+=======
+    exclude = ('user',)
+
+    def save_model(self, request, obj, form, change):
+        if not change:
+            obj.user = request.user
+            obj.save()
+        super(TeacherAdmin, self).save_model(request, obj, form, change)
+>>>>>>> 8b7b00c (corrections in apps views, forms and templates)

@@ -14,6 +14,7 @@ from .models import CalendarEvent
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 class AdminSplitDateTime(admin_widgets.AdminSplitDateTime):
@@ -61,11 +62,23 @@ class CalendarEventForm(forms.ModelForm):
     )
 
 >>>>>>> 98c1c6d (corrects on apps)
+=======
+class CalendarEventForm(forms.ModelForm):
+>>>>>>> 8b7b00c (corrections in apps views, forms and templates)
     class Meta:
         model = CalendarEvent
         fields = '__all__'
 
-    # def __init__(self, *args, **kwargs):
-    #     super(CalendarEventForm, self).__init__(*args, **kwargs)
-    #     for field_name, field in self.fields.items():
-    #         field.widget.atrs['class'] = 'form-control'
+        widgets = {
+            'start': admin_widgets.AdminSplitDateTime(),
+            'end': admin_widgets.AdminSplitDateTime(),
+        },
+        labels = {
+            'start': _('Iniciando em:'),
+            'event_end': _('Terminando em:'),
+        },
+        field_classes = {
+            'start': forms.SplitDateTimeField,
+            'end': forms.SplitDateTimeField,
+
+        }

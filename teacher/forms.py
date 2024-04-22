@@ -1,3 +1,4 @@
+from django.http import request
 from django import forms
 <<<<<<< HEAD
 =======
@@ -19,5 +20,10 @@ class TeacherForm(forms.ModelForm):
 
     class Meta:
         model = Teacher
+<<<<<<< HEAD
         fields = '__all__'
 >>>>>>> ee2e9db (add, configurate and edit app teacher)
+=======
+        fields = ['school', 'first_name', 'last_name', 'email', 'phone_ddd', 'phone_number', 'address_zipcode',
+                  'address', 'address_number', 'address_complement', 'address_district', 'address_city', 'address_state']
+>>>>>>> 8b7b00c (corrections in apps views, forms and templates)

@@ -210,7 +210,6 @@ class SchoolYear(models.Model):
 =======
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
 from core.models import TimeStamp
 
 
@@ -256,6 +255,12 @@ class School(TimeStamp):
     def __str__(self):
         """Unicode representation of School."""
         return self.name.upper()
+
+    def save_model(self, request, obj, form, change):
+        if not change:
+            obj.user = request.user
+            obj.save()
+        super(School, self).save_model(request, obj, form, change)
 
 
 class StructSchool(models.Model):

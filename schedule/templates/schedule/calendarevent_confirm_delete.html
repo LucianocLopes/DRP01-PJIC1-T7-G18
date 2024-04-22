@@ -33,7 +33,7 @@
 
     {% url 'event_all' as list_all %}
     <div class="container-md pt-2 pb-5" id='wrap'>
-        <div class="container d-flex justify-content-center mt-5" style="width: 50%;">
+        <div class="container d-flex justify-content-center mt-5">
             <div class="col mt-5 text-center">
                 <h1 class="mb-5">Excluir Evento</h1>
 
@@ -42,8 +42,8 @@
                 <h5 class="my-1">Inicio {{ calendarevent.start }} e termino {{ calendarevent.end }}</h5>
                 <form action="" method="POST">
                     {% csrf_token %}
-                    <input type="submit" class="btn btn-primary btn-lg" value="Confirmar" style="margin-right: 30px; margin-top: 30px;">
-                    <input type="submit" class="btn btn-danger btn-lg" style="margin-top: 30px;" onclick="window.location='{{ list_all }}'; return false;" value="Cancelar">
+                    <input type="submit" class="btn btn-primary btn-lg" value="Confirmar">
+                    <input type="submit" class="btn btn-danger btn-lg" onclick="window.location='{{ list_all }}'; return false;" value="Cancelar">
                 </form>
             </div>
         </div>

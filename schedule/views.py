@@ -1,10 +1,14 @@
 from django.shortcuts import render
 <<<<<<< HEAD
+<<<<<<< HEAD
 from django.http import HttpResponse
 <<<<<<< HEAD
 =======
 from django.http import HttpRequest, HttpResponse
 >>>>>>> ac9891b (corrections apps)
+=======
+from django.http import HttpResponse
+>>>>>>> 8b7b00c (corrections in apps views, forms and templates)
 from django.views import View
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -282,24 +286,25 @@ class EventBaseView(PermissionRequiredMixin, View):
 class EventListView(EventBaseView, ListView):
     "list view"
     permission_required = 'calendarevent.view_calendarevent'
+    form_class = CalendarEventForm
 
 
 class EventDetailView(EventBaseView, DetailView):
     'detailview'
-
     permission_required = 'calendarevent.change_calendarevent'
+    form_class = CalendarEventForm
 
 
 class EventCreateView(EventBaseView, CreateView):
     'createview'
-    form_class = CalendarEventForm
     permission_required = 'calendarevent.add_calendarevent'
+    form_class = CalendarEventForm
 
 
 class EventUpdateView(EventBaseView, UpdateView):
     'updadeview'
-    form_class = CalendarEventForm
     permission_required = 'calendarevent.add_calendarevent'
+    form_class = CalendarEventForm
 
 
 class EventDeleteView(EventBaseView, DeleteView):

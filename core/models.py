@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 from django.urls import reverse
 
@@ -104,6 +105,9 @@ class PhoneBase(models.Model):
     class Meta:
         abstract = True
 =======
+=======
+
+>>>>>>> 8b7b00c (corrections in apps views, forms and templates)
 from django.contrib.auth import get_user_model
 
 USER = get_user_model()

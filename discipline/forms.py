@@ -8,7 +8,7 @@ class DisciplineForm(forms.ModelForm):
 
     class Meta:
         model = Discipline
-        fields = '__all__'
+        fields = ['name', 'duration']
 
 
 class GraduationForm(forms.ModelForm):
@@ -16,3 +16,5 @@ class GraduationForm(forms.ModelForm):
     class Meta:
         model = Graduation
         fields = '__all__'
+
+        widgets = {'user': forms.HiddenInput()}
