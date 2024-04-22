@@ -1,5 +1,6 @@
 
 
+
 {% extends "base.html" %}
 
 
@@ -9,15 +10,14 @@
 
     {% include 'parciais/_navbar.html' %}
 
-    {% url 'teacher_all' as list_all %}
+    {% url 'graduation_all' as list_all %}
     <div class="container-md pt-2 pb-5" id='wrap'>
         <div class="container d-flex justify-content-center mt-5">
             <div class="col mt-5 text-center">
-                <h1 class="mb-5">Excluir cadastro do Professor</h1>
+                <h1 class="mb-5">Excluir a Graduação</h1>
 
-
-                <p class="h5">Você deseja realmente excluir o cadastro do professor</p>
-                <h4 class="mt-5">{{ teacher.full_name }}?</h4>
+                <p class="h5">Você deseja realmente excluir a Graduação</p>
+                <h4 class="mt-5">{{ graduation.name }}?</h4>
                 <form action="" method="POST">
                     {% csrf_token %}
                     <input type="submit" class="btn btn-primary btn-lg mx-3 my-3" value="Confirmar">
