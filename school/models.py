@@ -287,4 +287,10 @@ class StructSchool(models.Model):
     def __str__(self):
         """Unicode representation of StructSchool."""
         return f'{self.struct_type} {self.name}'
+<<<<<<< HEAD
 >>>>>>> 70b58ba (add app school and config pages)
+=======
+
+    def full_name_struct(self):
+        return f'{self.struct_type.get.display}'
+>>>>>>> 93b9589 (add and config new app group)

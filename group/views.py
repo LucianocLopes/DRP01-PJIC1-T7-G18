@@ -1,8 +1,15 @@
 from django.views import View
+<<<<<<< HEAD
+=======
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+>>>>>>> 93b9589 (add and config new app group)
 from django.urls import reverse_lazy
 
 from django.contrib.auth.mixins import PermissionRequiredMixin
 
+<<<<<<< HEAD
 from school.models import School
 
 from .forms import GroupForm
@@ -35,10 +42,16 @@ class GridGroupCreateView(CreateView):
     success_url = reverse_lazy('group_all')
 
 
+=======
+from .models import Group
+
+from .forms import GroupForm
+>>>>>>> 93b9589 (add and config new app group)
 
 
 class GroupBaseView(PermissionRequiredMixin, View):
     model = Group
+<<<<<<< HEAD
     success_url = reverse_lazy('group_all')
 
     def get_context_data(self, **kwargs):
@@ -51,37 +64,68 @@ class GroupListView(GroupBaseView, ListView):
     paginate_by = 10
     permission_required = 'group.view_group'
     form_class = GroupForm
+=======
+    templatename = 'group/group_list.html'
+    fields = '__all__'
+    success_url = reverse_lazy('group_all')
+
+
+class GroupListView(GroupBaseView, ListView):
+    "list view"
+    permission_required = 'group.view_group'
+>>>>>>> 93b9589 (add and config new app group)
 
 
 class GroupDetailView(GroupBaseView, DetailView):
     'detailview'
+<<<<<<< HEAD
     permission_required = 'group.change_group'
     form_class = GroupForm
+=======
+    form = GroupForm
+    permission_required = 'group.change_group'
+>>>>>>> 93b9589 (add and config new app group)
 
 
 class GroupCreateView(GroupBaseView, CreateView):
     'createview'
+<<<<<<< HEAD
     form_class = GroupForm
     permission_required = 'group.add_group'
 
     def form_valid(self, form):
+=======
+    form = GroupForm
+    permission_required = 'group.add_group'
+
+    def form_valid(self, form):
+        name_id = form.instance.identification_group
+        name_cl = form.instance.graduation.name
+        print(name_id, name_cl)
+>>>>>>> 93b9589 (add and config new app group)
         form.instance.user = self.request.user
         return super().form_valid(form)
 
 
 class GroupUpdateView(GroupBaseView, UpdateView):
     'updadeview'
+<<<<<<< HEAD
     permission_required = 'group.change_group'
     form_class = GroupForm
         
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+=======
+    form = GroupForm
+    permission_required = 'group.change_group'
+>>>>>>> 93b9589 (add and config new app group)
 
 
 class GroupDeleteView(GroupBaseView, DeleteView):
     'deleteview'
     permission_required = 'group.delete_group'
+<<<<<<< HEAD
 
 
 class GroupStudentsView(GroupBaseView, DetailView):
@@ -93,3 +137,5 @@ class GroupStudentsView(GroupBaseView, DetailView):
         context = super(GroupStudentsView, self).get_context_data(**kwargs)
         context['school'] = School.objects.all().annotate().first()
         return context
+=======
+>>>>>>> 93b9589 (add and config new app group)
