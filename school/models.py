@@ -77,3 +77,6 @@ class StructSchool(models.Model):
     def __str__(self):
         """Unicode representation of StructSchool."""
         return f'{self.struct_type} {self.name}'
+
+    def full_name_struct(self):
+        return f'{self.struct_type.get.display}'
