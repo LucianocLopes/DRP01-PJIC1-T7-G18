@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Student
+from .models import Student, RegisteredManager, StudentNoResgistred, StudentResgistred, NoRegisteredManager
 
 # Register your models here.
 
@@ -9,7 +9,7 @@ from .models import Student
 class StudentAdmin(admin.ModelAdmin):
     '''Admin View for Student'''
 
-    list_display = ('id', 'first_name', 'last_name')
+    list_display = ('first_name', 'registered')
     exclude = ('user',)
 
     def save_model(self, request, obj, form, change):
@@ -17,3 +17,21 @@ class StudentAdmin(admin.ModelAdmin):
             obj.user = request.user
             obj.save()
         super(StudentAdmin, self).save_model(request, obj, form, change)
+
+
+@admin.register(StudentResgistred)
+class StudentRegisteredAdmin(StudentAdmin):
+    '''Admin View for Student'''
+    objects = RegisteredManager()
+
+    class Meta:
+        proxy = True
+
+
+@admin.register(StudentNoResgistred)
+class StudentNoRegisteredAdmin(StudentAdmin):
+    '''Admin View for Student'''
+    objects = NoRegisteredManager()
+
+    class Meta:
+        proxy = True

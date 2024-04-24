@@ -35,8 +35,8 @@
             <div class="col mt-5 text-center">
                 <h1 class="mb-5">Excluir Classe Escolar</h1>
 
-                <p class="h5">Você deseja realmente excluir a classe escolar?</p>
-                <h4 class="mt-5">{{ group.name }}</h4>
+                <p class="h5">Você deseja realmente excluir a turma escolar?</p>
+                <h4 class="mt-5">{{ group.graduation }}-{{ group.identification_group }}</h4>
                 <form action="" method="POST">
                     {% csrf_token %}
                     <input type="submit" class="btn btn-primary btn-lg mx-3 my-3" value="Confirmar">

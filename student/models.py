@@ -6,6 +6,9 @@ from core.models import TimeStamp
 
 class Student(TimeStamp):
 
+    registered = models.BooleanField(
+        _("Matriculado"), default=False, null=True, blank=True)
+
     first_name = models.CharField(_("Primeiro Nome"), max_length=50)
     last_name = models.CharField(_("Sobrenome"), max_length=70)
 
@@ -47,6 +50,53 @@ class Student(TimeStamp):
 
     def save_model(self, request, obj, form, change):
         if not change:
+            self.registered = False
             obj.user = request.user
             obj.save()
         super(Student, self).save_model(request, obj, form, change)
+
+    def matricular(self):
+        if not self.registered:
+            self.registered = True
+
+    def cancelar_matricula(self):
+        if self.registered:
+            self.registered = False
+
+
+class RegisteredManager(models.Manager):
+    def get_queryset(self):
+        return super(RegisteredManager, self).get_queryset().filter(
+            registered=True)
+
+
+class NoRegisteredManager(models.Manager):
+    def get_queryset(self):
+        return super(NoRegisteredManager, self).get_queryset().filter(
+            registered=False)
+
+
+class StudentResgistred(Student):
+    objects = RegisteredManager()
+
+    class Meta:
+        verbose_name = 'Aluno Matriculado'
+        verbose_name_plural = 'Alunos Matriculados'
+        proxy = True
+
+    def save(self, *args, **kwargs):
+        kwargs['registered'] = True
+        return super().save(*args, **kwargs)
+
+
+class StudentNoResgistred(Student):
+    objects = NoRegisteredManager()
+
+    class Meta:
+        verbose_name = 'Aluno Não Matriculado'
+        verbose_name_plural = 'Alunos Não Matriculados'
+        proxy = True
+
+    def save(self, *args, **kwargs):
+        kwargs['registered'] = False
+        return super().save(*args, **kwargs)

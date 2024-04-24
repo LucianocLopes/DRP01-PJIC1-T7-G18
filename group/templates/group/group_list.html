@@ -87,65 +87,74 @@
 =======
     {% include 'parciais/_navbar.html' %}
     <div class="container-md pt-2 pb-5" id='wrap'>
-        <div class="col">
-            <h1 class="text-center">Classes da Escola</h1>
-            <table class="table table-striped mt-5">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th class="text-center" scope="col">Classe</th>
-                        <th class="text-center" scope="col">Local</th>
-                        <th class="text-center" scope="col">Professor Responsavel</th>
-                        <th class="text-center" scope="col">Quantidade de Alunos</th>
-                        <th class="text-center" scope="col">Quantidade de vagas</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                
-                    {% for group in group_list %}
-                    <tr>
-                        <th scope="row">{{ forloop.counter }}</th>
-                        {% if perms.group.view_group %}
-                            <td class="ml-5"><a href="{% url 'group_detail' group.id %}">{{ group.graduation }}-{{ group.identification_group }}</a></td>
-                        {% else %}
-                            <td clSass="ml-5">{{ group.graduation }}-{{ group.identificationidentification_group }}</td>
-                        {% endif %}
-                        <td class="text-center">{{ group.localization.get_struct_type_display }} {{ group.localization.name }}</td>
-                        <td class="text-center">{{ group.teacher_manager.full_name }}</td>
-                        <td class="text-center">{{ group.get_matriculados }}</td>
-                        <td class="text-center">{{ group.get_vagas }}</td>
+        <h2 class="text-center m-5">TURMAS DE ALUNOS</h2>            
+       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 p-3">
 
-                        {% if perms.group.change_group %}
-                            <td><a href="{% url 'group_update' group.id %} ">Alterar</a></td>
-                        {% endif %}
-                        {% if perms.group.delete_group %}                 
-                            <td><a href="{% url 'group_delete' group.id %}">Excluir</a></td>
-                        {% endif %}     
-                    </tr>
-                {% endfor %}
+
+            {% for group in group_list %}
+                <div class="col">                
+                    <div class="card shadow-sm">
+                        <img src="{% static 'img/escola/alunos_1.jpeg' %}" alt="imagem da turma de alunos" style='height: 100%; width: 100%;'>
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th scope="col">Turma:</th>
+                                    <td class="text-center">{{ group.graduation }}-{{ group.identification_group }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">Sala:</th>
+                                    <td class="text-center">{{ group.localization.get_struct_type_display }} {{ group.localization.name }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">Prof. Responsável:</th>
+                                    <td class="text-center"><small>{{ group.teacher_manager.full_name }}</small></td>
+                                </tr>
+                            </table>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                
+                                    {% if perms.group.view_group %}
+                                        <a href="{% url 'group_detail' group.id %}">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Visualizar</button>
+                                        </a>
+                                    {% endif %}
+                                    
+                                    {% if perms.group.change_group %}
+                                        <a href="{% url 'group_update' group.id %}">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Alterar</button>
+                                        </a>
+                                    {% endif %}
+                                    {% if perms.group.delete_group %}
+                                        <a href="{% url 'group_delete' group.id %}">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Excluir</button>
+                                        </a>
+                                    {% endif %}
+                                
+                                </div>
+                                <small class="text-body-secondary">Alunos 
+                                            <a class="text-body-secondary" href="{% url 'group_students' group.id %}">{{ group.get_matriculados }}</a> 
+                                    | Vagas:
+                                    <a class="text-body-secondary" href="#">{{ group.get_vagas }}</a>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            {% endfor %}
             
-                </tbody>
-            </table>
+        </div>
         {% if perms.group.add_group %}        
             <div class="d-flex justify-content-center">
-                <a href="{% url 'group_create' %}" class="d-block btn btn-primary btn-lg my-5 mx-2 my-2">Nova Classe</a>
+                <a href="{% url 'group_create' %}" class="d-block btn btn-secondary btn-lg mx-2 my-2">Nova Turma</a>
             </div>
-        {% else %}
-            não tem permissões
         {% endif %}
-    
-            <div class="container d-flex justify-content-center">
-                <input type="submit" class="btn btn-secundary btn-lg my-2 mx-2 p-1" value="Estruturas">
-                <input type="submit" class="btn btn-secundary btn-lg my-2 mx-2 p-1" value="Diciplinas">
-                <input type="submit" class="btn btn-secundary btn-lg my-2 mx-2 p-1" value="Graduações">
-                <input type="submit" class="btn btn-secundary btn-lg my-2 mx-2 p-1" value="Professores">
-            </div>   
-        </div>            
-        <div class="col mt-5 image_school_3"></div>    
+     
     </div>
+<<<<<<< HEAD
 
 
 >>>>>>> 93b9589 (add and config new app group)
 {% endblock content %}
+=======
+{% endblock content %}
+>>>>>>> 64cbb11 (configurations and edits apps)

@@ -35,33 +35,99 @@
     </div>
 =======
     {% include 'parciais/_navbar.html' %}
-    
-<!-- BOOTSTRAP FORM -->
-        
-<div class="container-md pt-2 pb-5" id='wrap'>
-    <div class="container d-flex justify-self-center mt-5">
-        <div class="col mt-5">
-            <form action="" method="post">
-                {% csrf_token %}
-                <table class="table form form-control">
-                    <tbody>
-                        <tr>
-                           {{ form.as_table }}
-                        </tr> 
-                    </tbody>
-                </table>
-                <div class="container d-flex justify-content-center">
-                    <input type="submit" class="btn btn-primary btn-lg" value="Salvar">
-                    <input type="submit" class="btn btn-danger btn-lg" onclick="window.location='{% url 'group_all' %}'; return false;" value="Cancelar">
-                </div>    
-            </form> 
+        <div class="container">
+           
+        <div class="row">
+            
+            <div class="col-md-12 order-3">
+                <div class="container-md p-3" id='wrap'>
+                    <div class="btn-group">            
+                        <a href="{% url 'group_all' %}">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Voltar</button>
+                        </a>
+                        <a href="{% url 'group_all' %}">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Voltar</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 order-0">
+                <div class="container-md p-3" id='wrap'>
+                    <div class="col p-3">
+                        <h4 class=text-center>Graduação</h4>
+                        <div class="d-flex justify-content-center">
+                            <table class="table table-striped mt-5">
+                                <tbody>
+                                    <tr>
+                                        <th scope="col">Escola:</th>
+                                        <td>{{ form.school }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Graduação:</th>
+                                        <td>{{ form.graduation }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Prof. Responsável:</th>
+                                        <td>{{ form.teacher_manager }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 order-1">
+                <div class="container-md p-3" id='wrap'>
+                    <div class="col p-3">
+                        <h4 class=text-center>Detalhes</h4>
+                        <div class="d-flex">
+                            <table class="table table-striped mt-5">
+                                <tbody>
+                                    <tr>
+                                        <th scope="col">Localização:</th>
+                                        <td>{{ form.localization }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Turma:</th>
+                                        <td>{{ form.identification_group }}</td>                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Periodo:</th>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>        
+            </div>
+
+            <div class="col-12 order-2">
+                <div class="container-md p-3" id='wrap'>
+                    <div class="col p-3">
+                        <h4 class=text-center>Matricular Alunos</h4>
+                        <table class="table table-striped table-sm my-3">
+                            <thead>
+                                <tr class="">
+                                    <th>Alunos</th>
+                                </tr>
+                                <tr>
+                                    <td>{{ form.students }}</td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
         </div>
-        <div class="col mt-5 image_school">
-        </div>
     </div>
+<<<<<<< HEAD
 </div>
 <!-- END BOOTSTRAP FORM -->
 
 >>>>>>> 93b9589 (add and config new app group)
+=======
+>>>>>>> 64cbb11 (configurations and edits apps)
 {% endblock %}
