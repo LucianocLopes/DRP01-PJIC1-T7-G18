@@ -68,9 +68,10 @@ class Group(TimeStamp):
         verbose_name = 'Classe'
         verbose_name_plural = 'Classes'
 
+    @property
     def name(self):
 
-        return f'{self.graduation}-{self.name} '
+        return f'{self.graduation}-{self.identification_group} '
 
     @property
     def get_information(self):
@@ -93,7 +94,7 @@ class Group(TimeStamp):
 
     def __str__(self):
 
-        return f'{self.graduation} - {self.name}'
+        return self.name
 
     def get_fields(self):
 
