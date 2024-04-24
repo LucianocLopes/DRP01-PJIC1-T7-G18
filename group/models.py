@@ -75,7 +75,7 @@ class Group(TimeStamp):
     @property
     def get_information(self):
         result = Group.objects.values().annotate(
-            matriculados=models.Count('students', filter=Q(id=self.id)),
+            matriculados=models.Count('students', filter=Q(id=self.id))
         )
         return result
 
@@ -103,6 +103,10 @@ class Group(TimeStamp):
 
     def save_model(self, request, obj, form, change):
         if not change:
+            for student in self.students.all():
+                if not student.registered:
+                    student.matricular()
+
             obj.user = request.user
             obj.save()
         super(Group, self).save_model(request, obj, form, change)

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% load static humanize %}
+
+{% block content %}
+
+    {% include 'parciais/_navbar.html' %}
+    <div class="container-md pt-2 pb-5" id='wrap'>
+        <h2 class="text-center m-5">ALUNOS</h2>
+        <div class="btn-group">            
+            
+            {% if perms.student.add_group %}
+                <a href="{% url 'student_create' %}">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Novo</button>
+                </a>
+            {% endif %}
+                
+                
+        </div>            
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 p-3">
+
+            <!-- On tables -->
+        <table class="table table-success table-striped mt-5">
+            <thead>
+                <tr class="table table-success">
+                    <th>#</th>
+                    <th class="">Matricula</th>
+                    <th class="">Nome</th>
+                    <th class="">Responsáveis</th>
+                    <th class="">E-mail</th>
+                    <th class="">Telefone</th>
+                    <th class=""></th>
+                    <th class=""></th>
+                </tr>
+            </thead>
+            <tbody class='justify-items-center'>
+                                
+                {% comment %}{% with ''|center:30 as range %}
+                    {% for _ in range %}
+                            
+                    {% endfor %}
+                {% endwith %} {% endcomment %}
+                
+                {% for student in group.students.all %}
+                    <tr >
+                        <td class="text-center">{{ forloop.counter }}</td>
+                        <td class="text-end">{{ student.id }}</td>
+                        {% if perms.student.view_group %}
+                            <a href="{% url 'student_detail' student.id %}" student.id ><td>{{ student.full_name }}</td></a>
+                        {% else %}
+                            <td>{{ student.full_name }}</td>
+                        {% endif %}
+                        <td >Mãe: {{ student.mother_name }} 
+                        <br>Pai: {{ student.mother_name }}</td>
+                        <td >{{ student.email }}</td>
+                        <td >({{ student.phone_ddd }}) {{ student.phone_number }}</td>
+                                    
+                        {% if perms.student.delete_group %}
+                            <td><a href="{% url 'group_delete' group.id %}">Apagar</a></td>
+                        {% endif %}
+                        {% if perms.student.add_group %}
+                        <td><a href="{% url 'student_update' student.id %}">Alterar</a></td>
+                        {% endif %}
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

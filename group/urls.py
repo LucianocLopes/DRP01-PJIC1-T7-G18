@@ -8,4 +8,6 @@ urlpatterns = [
     path('new/', GroupCreateView.as_view(), name='group_create'),
     path('<int:pk>/update/', GroupUpdateView.as_view(), name='group_update'),
     path('<int:pk>/delete/', GroupDeleteView.as_view(), name='group_delete'),
+    path("<int:pk>/students-list/",
+         GroupStudentsView.as_view(), name="group_students"),
 ]

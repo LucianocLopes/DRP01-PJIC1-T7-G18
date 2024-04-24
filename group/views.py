@@ -1,4 +1,5 @@
 from django.views import View
+from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -13,41 +14,47 @@ from .forms import GroupForm
 
 class GroupBaseView(PermissionRequiredMixin, View):
     model = Group
-    templatename = 'group/group_list.html'
-    fields = '__all__'
     success_url = reverse_lazy('group_all')
 
 
 class GroupListView(GroupBaseView, ListView):
     "list view"
     permission_required = 'group.view_group'
+    form_class = GroupForm
 
 
 class GroupDetailView(GroupBaseView, DetailView):
     'detailview'
-    form = GroupForm
     permission_required = 'group.change_group'
+    form_class = GroupForm
 
 
 class GroupCreateView(GroupBaseView, CreateView):
     'createview'
-    form = GroupForm
+    form_class = GroupForm
     permission_required = 'group.add_group'
 
     def form_valid(self, form):
-        name_id = form.instance.identification_group
-        name_cl = form.instance.graduation.name
-        print(name_id, name_cl)
+        for student in form.students.all():
+            if not student.registered:
+                student.matricular()
+
         form.instance.user = self.request.user
         return super().form_valid(form)
 
 
 class GroupUpdateView(GroupBaseView, UpdateView):
     'updadeview'
-    form = GroupForm
     permission_required = 'group.change_group'
+    form_class = GroupForm
 
 
 class GroupDeleteView(GroupBaseView, DeleteView):
     'deleteview'
     permission_required = 'group.delete_group'
+
+
+class GroupStudentsView(GroupBaseView, DetailView):
+    'students_detail_view'
+    template_name = 'group/group_students.html'
+    permission_required = 'group.add_group'
