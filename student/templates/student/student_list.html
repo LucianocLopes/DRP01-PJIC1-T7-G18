@@ -8,13 +8,13 @@
     <div class="container-md pt-2 pb-5" id='wrap'>
         <div class="col">
             <h1 class="text-center">Alunos</h1>
-            <table class="table table-striped mt-5">
+            <table class="table table-sm-striped table-success mt-5">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th class="text-center" scope="col">Nome</th>
-                        <th class="text-center" scope="col">Mãe</th>
-                        <th class="text-center" scope="col">Pai</th>
+                        <th class="text-center" scope="col">Mãe | Pai</th>
+                        <th class="text-center" scope="col">email</th>
                         <th class="text-center" scope="col">Telefone</th>
                         <th></th>
                         <th></th>
@@ -30,9 +30,9 @@
                         {% else %}
                             <td clSass="ml-5">Prof. {{ teacher.first_name }}</td>
                         {% endif %}
-                        <td class="text-center">{{ st.mother_name }}</td>
-                        <td class="text-center">{{ st.father_name }}</td>
-                        <td class="text-center">{{ st.phone_number }}</td>
+                        <td class="text-center">{{ st.mother_name }} <br> {{ st.father_name }}</td>
+                        <td class="text-center">{{ st.email }}</td>
+                        <td class="text-center">({{ st.phone_ddd }}) {{ st.phone_number }}</td>
                         {% if perms.student.change_student %}
                             <td><a href="{% url 'student_update' st.id %} ">Alterar</a></td>
                         {% endif %}
