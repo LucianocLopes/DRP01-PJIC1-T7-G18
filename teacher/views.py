@@ -6,6 +6,8 @@ from django.urls import reverse_lazy
 
 from django.contrib.auth.mixins import PermissionRequiredMixin
 
+from school.models import School
+
 from .models import Teacher
 
 from .forms import TeacherForm
@@ -16,6 +18,11 @@ class TeacherBaseView(PermissionRequiredMixin, View):
     templatename = 'teacher/teacher_list.html'
     success_url = reverse_lazy('teacher_all')
     form_class = TeacherForm
+    
+    def get_context_data(self, **kwargs):
+        context = super(TeacherBaseView, self).get_context_data(**kwargs)
+        context['school'] = School.objects.all().annotate().first()
+        return context
 
 
 class TeacherListView(TeacherBaseView, ListView):

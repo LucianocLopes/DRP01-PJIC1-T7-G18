@@ -27,6 +27,10 @@ class IdentificationGroupChoice(models.TextChoices):
     N = 'N',
     O = 'O',
 
+class TurnChoice(models.TextChoices):
+    MANHA = 'M',_('Manhã')
+    TARDE = 'T', _('Tarde')
+    NOITE = 'N', _('Noite')
 
 class Group(TimeStamp):
 
@@ -34,6 +38,8 @@ class Group(TimeStamp):
                                             max_length=1,
                                             choices=IdentificationGroupChoice.choices,
                                             )
+
+    turn = models.CharField(_("Turno"), max_length=1, choices=TurnChoice.choices, blank=True, null=True)
 
     school = models.ForeignKey(
         School,

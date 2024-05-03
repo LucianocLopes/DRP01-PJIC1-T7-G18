@@ -5,10 +5,11 @@
 {% block content %}
 
     {% include 'parciais/_navbar.html' %}
-    <div class="container-md pt-2 pb-5" id='wrap'>
+    <div class="container pt-2 pb-5" id='wrap'>
         <div class="table-responsive col">
             <h1 class="text-center">Informações da Escola</h1>        
             <table class="table table-striped mt-5">
+                {% include 'parciais/_pagination.html' %}
                 <thead>
                     <tr>
                         <th>#</th>

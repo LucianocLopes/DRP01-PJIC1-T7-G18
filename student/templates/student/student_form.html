@@ -8,12 +8,12 @@
     
 <!-- BOOTSTRAP FORM -->
         
-<div class="container-md pt-2 pb-5" id='wrap'>
+<div class="container pt-2 pb-5" id='wrap'>
     <div class="container d-flex justify-self-center mt-5">
-        <div class="col mt-5">
+        <div class="table-responsive col mt-5">
             <form action="" method="post">
                 {% csrf_token %}
-                <table class="table form form-control">
+                <table class="table">
                     <tbody>
                         <tr>
                            {{ form.as_table }}
@@ -22,12 +22,10 @@
                 </table>
                 <div class="container d-flex justify-content-center">
                     <input type="submit" class="btn btn-primary btn-lg" value="Salvar">
-                    <input type="submit" class="btn btn-danger btn-lg" onclick="window.location='{% url 'school_all' %}'; return false;" value="Cancelar">
+                    <input type="submit" class="btn btn-danger btn-lg" onclick="window.location='{% url 'student_all' %}'; return false;" value="Cancelar">
                 </div>    
             </form> 
 
-        </div>
-        <div class="col mt-5 image_school">
         </div>
     </div>
 </div>

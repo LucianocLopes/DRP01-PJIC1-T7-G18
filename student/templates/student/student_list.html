@@ -5,11 +5,13 @@
 {% block content %}
 
     {% include 'parciais/_navbar.html' %}
-    <div class="container-md pt-2 pb-5" id='wrap'>
-        <div class="col">
+    <div class="container pt-2 pb-5" id='wrap'>
+        
+        <div class="table-responsive col">
+            
             <h1 class="text-center">Alunos</h1>
-            {% include 'parciais/_pagination.html' %}
-            <table class="table table-sm-striped table-success mt-5">
+            <table class="table table-success">
+                {% include 'parciais/_pagination.html' %}
                 <thead>
                     <tr>
                         <th>#</th>
@@ -17,8 +19,8 @@
                         <th class="text-center" scope="col">Mãe | Pai</th>
                         <th class="text-center" scope="col">email</th>
                         <th class="text-center" scope="col">Telefone</th>
-                        <th></th>
-                        <th></th>
+                        <th class="text-center" scope="col">Alterar</th>
+                        <th class="text-center" scope="col">Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,11 +36,15 @@
                         <td class="text-center">{{ st.mother_name }} <br> {{ st.father_name }}</td>
                         <td class="text-center">{{ st.email }}</td>
                         <td class="text-center">({{ st.phone_ddd }}) {{ st.phone_number }}</td>
-                        {% if perms.student.change_student %}
-                            <td><a href="{% url 'student_update' st.id %} ">Alterar</a></td>
+                        {% if perms.student.add_student %}
+                            <td class="text-center"><a href="{% url 'student_update' st.id %}">
+                                <i class="bi bi-pencil-square text-success"></i>
+                            </a></td>
                         {% endif %}
-                        {% if perms.student.delete_student %}                 
-                            <td><a href="{% url 'student_delete' st.id %}">Excluir</a></td>
+                        {% if perms.student.delete_student %}
+                            <td class="text-center"><a href="{% url 'student_delete' st.id %}">
+                                <i class="bi bi-trash3 text-danger"></i>
+                            </a></td>
                         {% endif %}     
                     </tr>
                 {% endfor %}

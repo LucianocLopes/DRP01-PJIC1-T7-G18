@@ -5,10 +5,11 @@
 {% block content %}
 
     {% include 'parciais/_navbar.html' %}
-    <div class="container-md pt-2 pb-5" id='wrap'>
-        <div class="col">
+    <div class="container pt-2 pb-5" id='wrap'>
+        <div class="table-responsive col">
             <h1 class="text-center">Graduações</h1>
             <table class="table table-striped mt-5">
+                {% include 'parciais/_pagination.html' %}
                 <thead>
                     <tr>
                         <th>#</th>
@@ -31,13 +32,16 @@
                         <td class="text-center">{{ graduation.duration_hours }}</td>
                         
                         {% if perms.graduation.change_graduation %}
-                            <td><a href="{% url 'graduation_update' graduation.id %} ">Alterar</a></td>
+                            <td class="text-center"><a href="{% url 'graduation_update' graduation.id %}">
+                                <i class="bi bi-pencil-square text-success"></i>
+                            </a></td>
                         {% endif %}
 
                         {% if perms.graduation.delete_graduation %}
-                           <td><a href="{% url 'graduation_delete' graduation.id %}">Excluir</a></td>
+                           <td class="text-center"><a href="{% url 'graduation_delete' graduation.id %}">
+                                <i class="bi bi-trash3 text-danger"></i>
+                            </a></td>
                         {% endif %}
-                        
                     </tr>
                 {% endfor %}
             
@@ -47,7 +51,6 @@
         {% if perms.graduation.add_graduation %}
             <div class="d-flex justify-content-center">
                 <a href="{% url 'graduation_create' %}" class="d-block btn btn-primary btn-lg my-5 mx-2 my-2">Novo Cadastro</a>
-                <A class="d-block btn btn-danger btn-lg my-5 mx-2 my-2" href="{% url 'school_all' %}">Voltar</a>
             </div>
         {% else %}
             não tem permissões

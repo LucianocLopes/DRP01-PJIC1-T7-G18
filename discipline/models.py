@@ -8,7 +8,7 @@ from core.models import TimeStamp
 
 class Discipline(TimeStamp):
     name = models.CharField(_("Nome da Disciplina"), max_length=50)
-    duration = models.IntegerField(_("Duração (hrs)"))
+    duration = models.IntegerField(_("Duração (hrs/semana)"))
 
     class Meta:
         """Meta definition for Discipline."""

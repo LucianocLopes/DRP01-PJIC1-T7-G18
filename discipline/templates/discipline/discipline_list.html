@@ -5,15 +5,18 @@
 {% block content %}
 
     {% include 'parciais/_navbar.html' %}
-    <div class="container-md pt-2 pb-5" id='wrap'>
-        <div class="col">
+    <div class="container pt-2 pb-5" id='wrap'>
+        <div class="table-responsive col">
             <h1 class="text-center">Disciplinas</h1>
             <table class="table table-striped mt-5">
+                {% include 'parciais/_pagination.html' %}
                 <thead>
                     <tr>
                         <th>#</th>
                         <th class="text-center" scope="col">Nome</th>
-                        <th class="text-center" scope="col">Quantidade de Horas</th>
+                        <th class="text-center" scope="col">Horas/Semana</th>
+                        <th class="text-center" scope="col">Alterar</th>
+                        <th class="text-center" scope="col">Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,12 +32,19 @@
                         <td class="text-center">{{ discipline.duration }}</td>
                         
                         {% if perms.discipline.change_discipline %}
-                            <td><a href="{% url 'discipline_update' discipline.id %} ">Alterar</a></td>
+                            <td class="text-center"><a href="{% url 'discipline_update' discipline.id %}">
+                                <i class="bi bi-pencil-square text-success"></i>
+                            </a></td>
                         {% endif %}
 
                         {% if perms.discipline.delete_discipline %}
-                           <td><a href="{% url 'discipline_delete' discipline.id %}">Excluir</a></td>
+                            <td class="text-center"><a href="{% url 'discipline_delete' discipline.id %}">
+                                <i class="bi bi-trash3 text-danger"></i>
+                            </a></td>     
                         {% endif %}
+
+                        
+                        
                         
                     </tr>
                 {% endfor %}
@@ -45,11 +55,7 @@
         {% if perms.discipline.add_discipline %}
             <div class="d-flex justify-content-center">
                 <a href="{% url 'discipline_create' %}" class="d-block btn btn-primary btn-lg my-5 mx-2 my-2">Novo Cadastro</a>
-                <A class="d-block btn btn-danger btn-lg my-5 mx-2 my-2" href="{% url 'school_all' %}">Voltar</a>
             </div>
-    
-        {% else %}
-            não tem permissões
         {% endif %}
             
         <div class="col mt-5 image_school"></div>    
