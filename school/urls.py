@@ -9,8 +9,6 @@ urlpatterns = [
     path('<int:pk>/update/', SchoolUpdateView.as_view(), name='school_update'),
     path('<int:pk>/delete/', SchoolDeleteView.as_view(), name='school_delete'),
     path("struct/", StructListView.as_view(), name="struct_all"),
-    path('struct/<int:pk>/detail/',
-         StructDetailView.as_view(), name='struct_detail'),
     path('struct/new/', StructCreateView.as_view(), name='struct_create'),
     path('struct/<int:pk>/update/',
          StructUpdateView.as_view(), name='struct_update'),

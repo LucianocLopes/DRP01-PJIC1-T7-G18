@@ -9,17 +9,7 @@
     
     <div class="container-md">
 
-        <div id='wrap'>
-        
-            {% if perms.calendarevent.add_calendarevent %}
-       
-                <div class="p-3 buttons justify-align-self-center">
-                    <a href="{% url 'event_all' %}"><input class="btn btn-secondary" type="button" value="Lista de Eventos"></a> 
-            {% endif %}
-                    <a href="{% url 'scheduling' %}"><input class="btn btn-secondary" type="button" value="Mês"></a>   
-                    <a href="{% url 'week_events' %}"><input class="btn btn-secondary" type="button" value="Semana"></a>
-                    <a href="{% url 'day_events' %}"><input class="btn btn-secondary" type="button" value="Dia"></a>
-                </div>            
+        <div id='wrap'>        
         
         {% calendar %}
     

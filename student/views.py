@@ -20,6 +20,7 @@ class StudentBaseView(PermissionRequiredMixin, View):
 
 class StudentListView(StudentBaseView, ListView):
     "list view"
+    paginate_by = 25
     permission_required = 'student.view_student'
 
 

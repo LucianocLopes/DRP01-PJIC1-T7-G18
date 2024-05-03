@@ -16,5 +16,5 @@ class GraduationForm(forms.ModelForm):
     class Meta:
         model = Graduation
         fields = '__all__'
-
-        widgets = {'user': forms.HiddenInput()}
+        exclude = ('user',)
+        # widgets = {'user': forms.HiddenInput()}

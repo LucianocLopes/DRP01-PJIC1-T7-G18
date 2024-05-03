@@ -8,6 +8,7 @@
     <div class="container-md pt-2 pb-5" id='wrap'>
         <div class="col">
             <h1 class="text-center">Alunos</h1>
+            {% include 'parciais/_pagination.html' %}
             <table class="table table-sm-striped table-success mt-5">
                 <thead>
                     <tr>
@@ -52,12 +53,6 @@
             não tem permissões
         {% endif %}
     
-            <div class="container d-flex justify-content-center">
-                <input type="submit" class="btn btn-secundary btn-lg my-2 mx-2 p-1" value="Estruturas">
-                <input type="submit" class="btn btn-secundary btn-lg my-2 mx-2 p-1" value="Diciplinas">
-                <input type="submit" class="btn btn-secundary btn-lg my-2 mx-2 p-1" value="Graduações">
-                <input type="submit" class="btn btn-secundary btn-lg my-2 mx-2 p-1" value="Professores">
-            </div>   
         </div>            
         <div class="col mt-5 image_school_3"></div>    
     </div>

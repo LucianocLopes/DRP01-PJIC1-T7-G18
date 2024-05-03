@@ -19,6 +19,7 @@ class GroupBaseView(PermissionRequiredMixin, View):
 
 class GroupListView(GroupBaseView, ListView):
     "list view"
+    paginate_by = 10
     permission_required = 'group.view_group'
     form_class = GroupForm
 

@@ -80,43 +80,14 @@ body {
     padding: 25px 0;
 }
 
-.col-md-6 order-md-1 {
-    padding-top: 25px;
-}
-
-@media(min-width: 768px) {
-    .col-md-6 order-md-1 {
-        padding-top: 0;
-    }
-}
-
-
-#link-container {
-    text-align: center;
-    padding-top: 50px;
-}
-
-
-/* NAVRBAR */
-
-
 /* HOME INDEX */
-.image-back {
-    background-color: #222 .2;
-}
-
-.image-center {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    width: 100vw;
-}
 
 .home-index {
     height: 100vh;
     width: 100%;
-    background-image: url(../img/escola/lapis_fundo.jpeg);
+    top: 0;
+    background-image: url(../img/escola/fundo_2.jpeg);
+    background-position: bottom;
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -132,9 +103,9 @@ body {
 
 #wrap {
     background-color: #fff;
-    margin-top: 20px;
-    border-radius: 20px;
-    box-shadow: .5px 10px 15px rgb(0, 0, 0, .2);
+    margin-top: 1rem;
+    border-radius: 1rem;
+    box-shadow: .5px 2px 3px rgb(0, 0, 0, .2);
 }
 
 /* 
@@ -207,8 +178,8 @@ div.image-404 {
 }
 
 /* SCHOLL IMGAGE */
-div.col.mt-5.image_school {
-    height: 75vh;
+.image_school {
+    height:auto;
     background-size: cover;
     background-image: url(../img/escola/struct_school.jpg);
     background-position: center;
@@ -233,8 +204,8 @@ div.col.mt-5.image_school_3 {
     background-repeat: no-repeat;
 }
 
-.image#image_event_edit {
-    height: 40vh;
+#event_image {
+    height: 30vh;
     background-image: url(../img/escola/edit_event_schedule.jpg);
     background-position: center;
     background-repeat: no-repeat;

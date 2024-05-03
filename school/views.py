@@ -15,10 +15,13 @@ class SchoolBaseView(PermissionRequiredMixin, View):
     model = School
     templatename = 'school/school_list.html'
     success_url = reverse_lazy('school_all')
+    
+    
 
 
 class SchoolListView(SchoolBaseView, ListView):
     "list view"
+    paginate_by = 10
     permission_required = 'school.view_school'
 
 
@@ -53,10 +56,16 @@ class StructBaseView(PermissionRequiredMixin, View):
     model = StructSchool
     templatename = 'school/struct/structschool_list.html'
     success_url = reverse_lazy('struct_all')
+    
+    def get_context_data(self, **kwargs):
+        context = super(StructBaseView, self).get_context_data(**kwargs)
+        context['school'] = School.objects.all().annotate().first()
+        return context
 
 
 class StructListView(StructBaseView, ListView):
     "list view"
+    paginate_by = 10
     templatename = 'school/struct/structschool_list.html'
     permission_required = 'structschool.view_structschool'
 
