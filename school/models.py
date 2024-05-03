@@ -225,6 +225,7 @@ class StructTypeChoice(models.TextChoices):
 class School(TimeStamp):
 
     name = models.CharField(_("Nome da Escola"), max_length=150)
+    fantasy = models.CharField(_("Nome Fantasia"), max_length=25, null=True, blank=True)
     cnpj_number = models.CharField(_("CNPJ da Escola"), max_length=18)
     school_number = models.CharField(
         _("Numero Cadastro Secretaria"), max_length=20)
@@ -267,16 +268,19 @@ class StructSchool(models.Model):
 
     school = models.ForeignKey(
         School, verbose_name=_("Escola"), on_delete=models.CASCADE)
-
-    name = models.CharField(_("Estrutura"), max_length=50)
+    
     struct_type = models.CharField(
-        _("Tipo de estrutura"), max_length=4, choices=StructTypeChoice.choices)
+        _("Estrutura"), max_length=4, choices=StructTypeChoice.choices)
+    
+    name = models.CharField(_("Identificação"), max_length=50)
+    
+    vagas = models.IntegerField(_("Quantidade de vagas"))
     height = models.IntegerField(_("Altura (m)"), blank=True, null=True)
     width = models.IntegerField(_("Largura (m)"), blank=True, null=True)
     length = models.IntegerField(_("Comprimento (m)"), blank=True, null=True)
-    area = models.IntegerField(_("Area (m2)"))
-    perimeter = models.IntegerField(_("Perímetro (m2)"))
-    vagas = models.IntegerField(_("Quantidade de vagas"))
+    area = models.IntegerField(_("Area (m²)"))
+    perimeter = models.IntegerField(_("Perímetro (m)"))
+    
 
     class Meta:
         """Meta definition for StructSchool."""
@@ -293,4 +297,12 @@ class StructSchool(models.Model):
 
     def full_name_struct(self):
         return f'{self.struct_type.get.display}'
+<<<<<<< HEAD
 >>>>>>> 93b9589 (add and config new app group)
+=======
+    
+    def get_fields(self):
+        return [(field.verbose_name, field.value_from_object(self))
+                for field in self.__class__._meta.fields[1:]
+                ]
+>>>>>>> d22ecf1 (correctons apps school. schedule, core)

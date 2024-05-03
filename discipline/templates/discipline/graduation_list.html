@@ -47,6 +47,7 @@
         {% if perms.graduation.add_graduation %}
             <div class="d-flex justify-content-center">
                 <a href="{% url 'graduation_create' %}" class="d-block btn btn-primary btn-lg my-5 mx-2 my-2">Novo Cadastro</a>
+                <A class="d-block btn btn-danger btn-lg my-5 mx-2 my-2" href="{% url 'school_all' %}">Voltar</a>
             </div>
         {% else %}
             não tem permissões

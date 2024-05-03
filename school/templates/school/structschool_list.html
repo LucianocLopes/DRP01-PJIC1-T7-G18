@@ -6,17 +6,19 @@
 
     {% include 'parciais/_navbar.html' %}
     <div class="container-md pt-2 pb-5" id='wrap'>
-        <div class="col">
-            <h1 class="text-center">Estruturas da </h1>
+        <div class="table-responsive col">
+            <h1 class="text-center">Estruturas do {{ school.fantasy }} </h1>
             <table class="table table-striped mt-5">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th class="text-center" scope="col">Nome</th>
+                        <th scope="col">Identificação</th>
                         <th class="text-center" scope="col">Tipo</th>
                         <th class="text-center" scope="col">Área</th>
                         <th class="text-center" scope="col">Perímetro</th>
                         <th class="text-center" scope="col">Vagas</th>
+                        <th class="text-center" scope="col">Alterar</th>
+                        <th class="text-center" scope="col">Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,13 +26,17 @@
                     {% for struct in structschool_list %}
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
-                        <td class="ml-5"><a href="{% url 'school_detail' struct.id %}">{{ struct.get_struct_type_display }} {{ struct.name }}</a></td>
+                        <td class="ml-5 text-center">{{ struct.get_struct_type_display }} {{ struct.name }}</td>
                         <td class="text-center">{{ struct.get_struct_type_display }}</td>
                         <td class="text-center">{{ struct.area }} m²</td>
                         <td class="text-center">{{ struct.perimeter }} m</td>
                         <td class="text-center">{{ struct.vagas }}</td>
-                        <td><a href="{% url 'struct_update' struct.id %} ">Alterar</a></td>
-                        <td><a href="{% url 'struct_delete' struct.id %}">Excluir</a></td>
+                        <td class="text-center"><a href="{% url 'struct_update' struct.id %} ">
+                            <i class="bi bi-pencil-square text-success"></i>
+                        </a></td>
+                        <td class="text-center"><a href="{% url 'struct_delete' struct.id %}">
+                            <i class="bi bi-trash3 text-danger"></i>
+                        </a></td>        
                     </tr>
                 {% endfor %}
             
@@ -38,18 +44,10 @@
             </table>
             <div class="d-flex justify-content-center">
                 <a href="{% url 'struct_create' %}" class="d-block btn btn-primary btn-lg">Novo Cadastro</a>
-                <input type="submit" class="btn btn-danger btn-lg" onclick="window.location='{% url 'school_all' %}'; return false;" value="Voltar">
             </div>   
         </div>
             
         <div class="col mt-5 image_school_2"></div>            
-        {% comment %} <div class="container d-flex justify-content-center mt-4">
-            <a href="{% url 'struct_all' %}"><input type="button" class="btn btn-secondary mx-1 " value="Estruturas"></a>
-            <a href="#"><input type="button" class="btn btn-secondary mx-1" value="Diciplinas"></a>
-            <a href="#"><input type="button" class="btn btn-secondary mx-1" value="Graduações"></a>
-            <a href="#"><input type="button" class="btn btn-secondary mx-1" value="Classes"></a>
-        </div>    {% endcomment %}
-    
     </div>
 
 {% endblock content %}

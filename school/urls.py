@@ -30,8 +30,6 @@ urlpatterns = [
 >>>>>>> 70b58ba (add app school and config pages)
 =======
     path("struct/", StructListView.as_view(), name="struct_all"),
-    path('struct/<int:pk>/detail/',
-         StructDetailView.as_view(), name='struct_detail'),
     path('struct/new/', StructCreateView.as_view(), name='struct_create'),
     path('struct/<int:pk>/update/',
          StructUpdateView.as_view(), name='struct_update'),

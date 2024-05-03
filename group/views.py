@@ -79,6 +79,7 @@ class GroupListView(GroupBaseView, ListView):
 
 class GroupListView(GroupBaseView, ListView):
     "list view"
+    paginate_by = 10
     permission_required = 'group.view_group'
 <<<<<<< HEAD
 >>>>>>> 93b9589 (add and config new app group)

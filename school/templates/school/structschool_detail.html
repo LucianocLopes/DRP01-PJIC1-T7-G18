@@ -7,35 +7,46 @@
 
     {% include 'parciais/_navbar.html' %}
 
-
-    <div class="container-md pt-2 pb-5" id='wrap'>
-        <div class="col">
-            <h1 class="text-center">Informações do Cadastro da Estrutura Escolar</h1>
-            <div class="d-flex justify-content-center">
-                <table class="table table-striped mt-5">
-                    <thead>
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    
-                        {% for label, value in struct.get_fields %}
-                            <tr>
-                                <td>{{  label| upper }}</td>
-                                <td>{{ value }}</td>
-                            </tr>
-                        {% endfor %}
-                            
-                    </tbody>
-                </table>
+    <div class="container">
+        <div class="row p-2">
+            <div class="col-md-6 order-0" id='wrap'>
+                <p class="text-center p-2">Informações da Estrutura</P>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Identificação</span>
+                    <input type="text" class="form-control text-center" aria-label="Estrutura da Escola" value="{{ structschool.get_struct_type_display }} {{ structschool.name }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Tipo</span>
+                    <input type="text" class="form-control" aria-label="Estrutura da Escola" value="{{ structschool.get_struct_type_display }}">
+                    <span class="input-group-text">Vagas</span>
+                    <input type="text" class="form-control" aria-label="Estrutura da Escola" value="{{ structschool.vagas }}">
+                </div>
             </div>
-            <div class="d-flex justify-content-center">
-                <a href="{% url 'struct_all' %}" class="d-block btn btn-primary btn-lg my-5">Voltar</a>
+            <div class='col-md-1'></div>
+            <div class="col-md-5 order-1" id='wrap'>
+                <p class="text-center p-2">Dimensões</P>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Alt.</span>
+                    <input type="text" class="form-control" aria-label="Estrutura da Escola" value="{{ structschool.height }} m">
+                    <span class="input-group-text">Larg.</span>
+                    <input type="text" class="form-control" aria-label="Estrutura da Escola" value="{{ structschool.width }} m">
+                    <span class="input-group-text">Comp.</span>
+                    <input type="text" class="form-control" aria-label="Estrutura da Escola" value="{{ structschool.length }} m">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Área</span>
+                    <input type="text" class="form-control" aria-label="Estrutura da Escola" value="{{ structschool.area}} m²">
+                    <span class="input-group-text">Perímetro</span>
+                    <input type="text" class="form-control" aria-label="Estrutura da Escola" value="{{ structschool.perimeter }} m">
+                </div>
             </div>
         </div>
-    </div>        
+    </div>
 
-
+    <div class='container'>
+        <div class="d-flex justify-content-between">
+            <a href="{% url 'struct_all' %}" class="d-block btn btn-primary btn-lg my-5">Voltar</a>
+        </div>
+    </div>
+    
 {% endblock  %}

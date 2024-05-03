@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 {% load static %}
 {% load humanize %}
 
@@ -65,23 +66,29 @@
     </div>
 =======
 {% load static humanize fullcalendar_tags %}
+=======
+{% load static %}
+{% load humanize %}
+
+>>>>>>> d22ecf1 (correctons apps school. schedule, core)
 
 {% block content %}
 
     {% include 'parciais/_navbar.html' %}
     <div class="container-md pt-2 pb-5" id='wrap'>
-        <div class="col">
+        <div class="table-responsive col">
             <h1 class="text-center">Lista de Eventos</h1>
             <table class="table table-striped mt-5">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th class="text-center" scope="col">Nome do Evento</th>
-                        <th class="text-center" scope="col">Inicio</th>
-                        <th class="text-center" scope="col">Termino</th>
-                        <th class="text-center" scope="col">Todo o Dia</th>
-                        <th></th>
-                        <th></th>
+                        <th class="text-center" scope="col">Compromisso</th>
+                        <th class="text-center" scope="col">Quando</th>
+                        <th class="text-center" scope="col">Inicia</th>
+                        <th class="text-center" scope="col">Termina</th>
+                        <th class="text-center" scope="col">Dia Inteiro?</th>
+                        <th scope="col">Alterar</th>
+                        <th scope="col">Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -90,11 +97,24 @@
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
                         <td class="ml-5"><a href="{% url 'event_detail' event.id %}">{{ event.title }}</a></td>
-                        <td class="text-center">{{ event.start }}</td>
-                        <td class="text-center">{{ event.end }}</td>
-                        <td class="text-center">{{ event.all_day }}</td>
-                        <td><a href="{% url 'event_update' event.id %} ">Alterar</a></td>
-                        <td><a href="{% url 'event_delete' event.id %}">Excluir</a></td>
+                        <td class="text-center">{{ event.start|naturalday }}</td>
+                        <td class="text-center">{{ event.start|naturaltime }}</td>
+                        <td class="text-center">{{ event.end|naturaltime }}</td>
+                        <td class="text-center">
+                        {% if event.all_day %}
+                            <i class="bi bi-check text-success "></i>
+                        {% else %}
+                            <i class="bi bi-x text-danger"></i>
+                        {% endif %}
+                        </td>
+                        
+                        
+                        <td class="text-center"><a href="{% url 'event_update' event.id %} ">
+                            <i class="bi bi-pencil-square text-success"></i>
+                        </a></td>
+                        <td class="text-center"><a href="{% url 'event_delete' event.id %}">
+                            <i class="bi bi-trash3 text-danger"></i>
+                        </a></td>
                     </tr>
                 {% endfor %}
             

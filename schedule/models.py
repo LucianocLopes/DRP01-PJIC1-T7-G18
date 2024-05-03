@@ -46,10 +46,10 @@ class CalendarEvent(models.Model):
     all_day = models.BooleanField(_('All day'), default=False)
 =======
     title = models.CharField(
-        _('Titulo do Evento'), blank=True, null=True, max_length=200)
-    start = models.DateTimeField(_('Inicia em'))
+        _('Compromisso'), blank=True, null=True, max_length=200)
+    start = models.DateTimeField(_('Inicia em'), help_text='Data DD/MM/AAAA e Hora HH:MM')
     end = models.DateTimeField(
-        _('Termina em'), null=True, blank=True)
+        _('Termina em'), null=True, blank=True, help_text='Data DD/MM/AAAA e Hora HH:MM')
     all_day = models.BooleanField(
         _('Dia Inteiro?'), default=False, blank=False, null=False)
 >>>>>>> 8b7b00c (corrections in apps views, forms and templates)
@@ -57,6 +57,7 @@ class CalendarEvent(models.Model):
     class Meta:
         verbose_name = _('Evento')
         verbose_name_plural = _('Eventos')
+        ordering = ['start']
 
     def get_fields(self):
         return [(field.verbose_name, field.value_from_object(self))

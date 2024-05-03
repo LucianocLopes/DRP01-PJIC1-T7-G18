@@ -8,13 +8,15 @@ from django.contrib.admin import widgets as admin_widgets
 from django.contrib.admin import widgets as admin_widgets
 >>>>>>> 98c1c6d (corrects on apps)
 from django.utils.translation import gettext_lazy as _
-
 from .models import CalendarEvent
 
 
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d22ecf1 (correctons apps school. schedule, core)
 
 
 class AdminSplitDateTime(admin_widgets.AdminSplitDateTime):
@@ -25,6 +27,7 @@ class CalendarEventForm(forms.ModelForm):
     start = forms.SplitDateTimeField(widget=admin_widgets.AdminSplitDateTime(), label='Iniciando em')
     end = forms.SplitDateTimeField(widget=admin_widgets.AdminSplitDateTime(), label='Terminando em')
 
+<<<<<<< HEAD
 =======
 class CalendarEventForm(forms.ModelForm):
 >>>>>>> ac9891b (corrections apps)
@@ -65,20 +68,8 @@ class CalendarEventForm(forms.ModelForm):
 =======
 class CalendarEventForm(forms.ModelForm):
 >>>>>>> 8b7b00c (corrections in apps views, forms and templates)
+=======
+>>>>>>> d22ecf1 (correctons apps school. schedule, core)
     class Meta:
         model = CalendarEvent
         fields = '__all__'
-
-        widgets = {
-            'start': admin_widgets.AdminSplitDateTime(),
-            'end': admin_widgets.AdminSplitDateTime(),
-        },
-        labels = {
-            'start': _('Iniciando em:'),
-            'event_end': _('Terminando em:'),
-        },
-        field_classes = {
-            'start': forms.SplitDateTimeField,
-            'end': forms.SplitDateTimeField,
-
-        }

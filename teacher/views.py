@@ -61,6 +61,7 @@ class TeacherBaseView(PermissionRequiredMixin, View):
 
 class TeacherListView(TeacherBaseView, ListView):
     "list view"
+    paginate_by = 10
     permission_required = 'teacher.view_teacher'
 
 

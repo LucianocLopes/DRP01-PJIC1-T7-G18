@@ -27,6 +27,9 @@ class GroupForm(forms.ModelForm):
     class Meta:
         model = Group
         fields = '__all__'
+<<<<<<< HEAD
 
         widgets = {'user': forms.HiddenInput()}
 >>>>>>> 93b9589 (add and config new app group)
+=======
+>>>>>>> d22ecf1 (correctons apps school. schedule, core)

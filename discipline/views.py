@@ -56,6 +56,7 @@ class GraduationBaseView(PermissionRequiredMixin, View):
 
 class GraduationListView(GraduationBaseView, ListView):
     "list view"
+    paginate_by = 10
     permission_required = 'graduation.view_graduation'
 
 

@@ -1,69 +1,89 @@
 {% load static humanize %}
 
-<nav class="navbar navbar-expand-md navbar-blue bg-info p-3" aria-label="Offcanvas navbar large">
+<nav class="navbar navbar-expand-lg navbar-blue bg-info p-3" aria-label="Offcanvas navbar large">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">DAMÁSIO</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="offcanvas offcanvas-end text-bg-info" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasNavbar2Label">Offcanvas</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{% url 'index' %}">Home</a>
-                </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'scheduling' %}">Agenda</a>
-                </li>    
-                
-                {% if perms.school.view_school %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'school_all' %}">Escola</a>
-                </li>    
-                {% endif %}
+        <a class="navbar-brand" href="{% url 'index' %}">{{ school.fantasy }}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#ofcNavbar01" aria-controls="ofcNavbar01" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end text-bg-info" tabindex="-1" id="ofcNavbar01" aria-labelledby="offcanvasNavbar2Label">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="ofcNavbar01Label">Offcanvas</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+                    </li>
+                    {% if perms.school.view_school %}
+                        <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Agenda
+                                </a>
+                                <ul class="dropdown-menu">
+                                    {% if perms.calendarevent.add_calendarevent %}
+
+                                        <li><a class="dropdown-item" href="{% url 'event_all' %}">Lista de Compromissos</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                    {% endif %}
+                                    <li><a class="dropdown-item" href="{% url 'day_events' %}">por Dia</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'week_events' %}">por Semana</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'scheduling' %}">por Mês</a></li>
+                                </ul>
+                            </li>
+                    {% endif %}
+
+                    {% if perms.school.view_school %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Escola
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'school_all' %}">Informações Cadastrais</a></li>
+                                <li><a class="dropdown-item" href="{% url 'struct_all' %}">Estrutura Escular</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'discipline_all' %}">Disciplinas</a></li>
+                                <li><a class="dropdown-item" href="{% url 'graduation_all' %}">Graduações</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'group_all' %}">Turmas</a></li>
+                            </ul>
+                        </li>  
+                    {% endif %}
                     
                 
-                {% if perms.teacher.view_teacher %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'teacher_all' %}">Professores</a>
-                </li>    
-                {% endif %}
+                    {% if perms.teacher.view_teacher %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'teacher_all' %}">Professores</a>
+                        </li>    
+                    {% endif %}
                     
-                {% if perms.student.view_student %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'student_all' %}">Alunos</a>
-                </li>
-                {% endif %}
+                    {% if perms.student.view_student %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'student_all' %}">Alunos</a>
+                        </li>
+                    {% endif %}
                
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Grade Escolar</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Grade Escolar</a>
+                    </li>
                
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'account_logout' %}">Sair</a>
-                </li>
-                {% comment %} <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
+                            {% if user.first_name %}
+                                {{ user.first_name }}
+                            {% else %}
+                                Usuário
+                            {% endif %}
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="#">Perfil</a></li>
+                            {% comment %} <li><a class="dropdown-item" href="#"></a></li> {% endcomment %}
+                            {% comment %} <li><hr class="dropdown-divider"></li> {% endcomment %}
+                            <li><a class="dropdown-item" href="{% url 'account_logout' %}">Sair</a></li>
                         </ul>
-                </li> {% endcomment %}
+                    </li>
                 </ul>
-                <form class="d-flex mt-3 mt-lg-0" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Procurar" aria-label="Search">
-                    <button class="btn btn-outline-light" type="submit">Procurar</button>
-                </form>
-                
             </div>
         </div>
     </div>
