@@ -36,12 +36,12 @@
     
 <!-- BOOTSTRAP FORM -->
         
-<div class="container-md pt-2 pb-5" id='wrap'>
+<div class="container pt-2 pb-5" id='wrap'>
     <div class="container d-flex justify-self-center mt-5">
-        <div class="col mt-5">
+        <div class="table-responsive col mt-5">
             <form action="" method="post">
                 {% csrf_token %}
-                <table class="table form form-control">
+                <table class="table">
                     <tbody>
                         <tr>
                            {{ form.as_table }}
@@ -54,8 +54,6 @@
                 </div>    
             </form> 
 
-        </div>
-        <div class="col mt-5 image_school">
         </div>
     </div>
 </div>

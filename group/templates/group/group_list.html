@@ -86,17 +86,16 @@
 
 =======
     {% include 'parciais/_navbar.html' %}
-    <div class="container-md pt-2 pb-5" id='wrap'>
+    <div class="container pt-2 pb-5" id='wrap'>
         <h2 class="text-center m-5">TURMAS DE ALUNOS</h2>            
-       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 p-3">
-
+       <div class="row row-cols-1 row-cols-md-3 g-3 p-3">
 
             {% for group in group_list %}
                 <div class="col">                
                     <div class="card shadow-sm">
                         <img src="{% static 'img/escola/alunos_1.jpeg' %}" alt="imagem da turma de alunos" style='height: 100%; width: 100%;'>
-                        <div class="card-body">
-                            <table class="table table-striped">
+                        <div class="table-responsive card-body">
+                            <table class="table">
                                 <tr>
                                     <th scope="col">Turma:</th>
                                     <td class="text-center">{{ group.graduation }}-{{ group.identification_group }}</td>
@@ -109,30 +108,38 @@
                                     <th scope="col">Prof. Responsável:</th>
                                     <td class="text-center"><small>{{ group.teacher_manager.full_name }}</small></td>
                                 </tr>
+                                <tr>
+                                    <th scope="col">Turno:</th>
+                                    <td class="text-center"><small>{{ group.get_turn_display }}</small></td>
+                                </tr>
                             </table>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                
-                                    {% if perms.group.view_group %}
-                                        <a href="{% url 'group_detail' group.id %}">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary">Visualizar</button>
-                                        </a>
-                                    {% endif %}
-                                    
-                                    {% if perms.group.change_group %}
-                                        <a href="{% url 'group_update' group.id %}">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary">Alterar</button>
-                                        </a>
-                                    {% endif %}
-                                    {% if perms.group.delete_group %}
-                                        <a href="{% url 'group_delete' group.id %}">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary">Excluir</button>
-                                        </a>
-                                    {% endif %}
-                                
+                            <div class="row">
+                                <div class="d-flex justify-content-end align-items-end">
+                                    <div class='col'>
+                                        <div class="btn-group">
+                                            {% if perms.group.view_group %}
+                                                <a href="{% url 'group_detail' group.id %}">
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary">Visualizar</button>
+                                                </a>
+                                            {% endif %}
+                                            
+                                            {% if perms.group.change_group %}
+                                                <a href="{% url 'group_update' group.id %}">
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary">Alterar</button>
+                                                </a>
+                                            {% endif %}
+                                            {% if perms.group.delete_group %}
+                                                <a href="{% url 'group_delete' group.id %}">
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary">Excluir</button>
+                                                </a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
                                 </div>
-                                <small class="text-body-secondary">Alunos 
-                                            <a class="text-body-secondary" href="{% url 'group_students' group.id %}">{{ group.get_matriculados }}</a> 
+                            </div>
+                            <div class="row">
+                                <small class="text-body-secondary text-end">Alunos 
+                                    <a class="text-body-secondary" href="{% url 'group_students' group.id %}">{{ group.get_matriculados }}</a> 
                                     | Vagas:
                                     <a class="text-body-secondary" href="#">{{ group.get_vagas }}</a>
                                 </small>
