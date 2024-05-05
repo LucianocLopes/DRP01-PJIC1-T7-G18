@@ -14,6 +14,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import PermissionRequiredMixin
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 from school.models import School
 
 from .forms import GroupForm
@@ -47,6 +48,10 @@ class GridGroupCreateView(CreateView):
 
 
 =======
+=======
+from school.models import School
+
+>>>>>>> 01b6098 (new corrections and mysql configurations)
 from .models import Group
 
 from .forms import GroupForm
@@ -76,6 +81,10 @@ class GroupListView(GroupBaseView, ListView):
 >>>>>>> 64cbb11 (configurations and edits apps)
     success_url = reverse_lazy('group_all')
 
+    def get_context_data(self, **kwargs):
+        context = super(GroupBaseView, self).get_context_data(**kwargs)
+        context['school'] = School.objects.all().annotate().first()
+        return context
 
 class GroupListView(GroupBaseView, ListView):
     "list view"
@@ -169,12 +178,19 @@ class GroupStudentsView(GroupBaseView, DetailView):
     template_name = 'group/group_students.html'
     permission_required = 'group.add_group'
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 01b6098 (new corrections and mysql configurations)
 
     def get_context_data(self, **kwargs):
         context = super(GroupStudentsView, self).get_context_data(**kwargs)
         context['school'] = School.objects.all().annotate().first()
+<<<<<<< HEAD
         return context
 =======
 >>>>>>> 93b9589 (add and config new app group)
 =======
 >>>>>>> 64cbb11 (configurations and edits apps)
+=======
+        return context
+>>>>>>> 01b6098 (new corrections and mysql configurations)

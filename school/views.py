@@ -103,7 +103,10 @@ class SchoolBaseView(PermissionRequiredMixin, View):
     templatename = 'school/school_list.html'
     success_url = reverse_lazy('school_all')
     
-    
+    def get_context_data(self, **kwargs):
+        context = super(SchoolBaseView, self).get_context_data(**kwargs)
+        context['school'] = School.objects.all().annotate().first()
+        return context
 
 
 class SchoolListView(SchoolBaseView, ListView):
