@@ -20,8 +20,11 @@ from pathlib import Path
 from django.contrib.messages import constants
 
 <<<<<<< HEAD:pi1t7g18/settings/base.py
+<<<<<<< HEAD:pi1t7g18/settings/base.py
 =======
 import dj_database_url
+=======
+>>>>>>> 3a9bd23 (delete itens):pi1tg18/settings/base.py
 
 >>>>>>> 01b6098 (new corrections and mysql configurations):pi1tg18/settings/base.py
 env = Env(
