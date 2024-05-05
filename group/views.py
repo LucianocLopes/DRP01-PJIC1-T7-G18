@@ -7,6 +7,8 @@ from django.urls import reverse_lazy
 
 from django.contrib.auth.mixins import PermissionRequiredMixin
 
+from school.models import School
+
 from .models import Group
 
 from .forms import GroupForm
@@ -16,6 +18,10 @@ class GroupBaseView(PermissionRequiredMixin, View):
     model = Group
     success_url = reverse_lazy('group_all')
 
+    def get_context_data(self, **kwargs):
+        context = super(GroupBaseView, self).get_context_data(**kwargs)
+        context['school'] = School.objects.all().annotate().first()
+        return context
 
 class GroupListView(GroupBaseView, ListView):
     "list view"
@@ -59,3 +65,8 @@ class GroupStudentsView(GroupBaseView, DetailView):
     'students_detail_view'
     template_name = 'group/group_students.html'
     permission_required = 'group.add_group'
+
+    def get_context_data(self, **kwargs):
+        context = super(GroupStudentsView, self).get_context_data(**kwargs)
+        context['school'] = School.objects.all().annotate().first()
+        return context

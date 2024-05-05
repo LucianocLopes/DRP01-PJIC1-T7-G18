@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "pi1t7g18",
+            "database": "pi1t7g18",
+            "username": "lucianoclopes"
+        }
+    ]
+}

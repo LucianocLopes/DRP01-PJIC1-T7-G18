@@ -15,6 +15,7 @@ from pathlib import Path
 
 from django.contrib.messages import constants
 
+import dj_database_url
 
 env = Env(
     DEBUG=(bool, False),
@@ -54,6 +55,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

@@ -15,8 +15,8 @@
                         <th>#</th>
                         <th class="text-center" scope="col">Graduação</th>
                         <th class="text-center" scope="col">Duração Total</th>
-                        <th></th>
-                        <th></th>
+                        <th class="text-center" scope="col">Alterar</th>
+                        <th class="text-center" scope="col">Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,7 +38,7 @@
                         {% endif %}
 
                         {% if perms.graduation.delete_graduation %}
-                           <td class="text-center"><a href="{% url 'graduation_delete' graduation.id %}">
+                            <td class="text-center"><a href="{% url 'graduation_delete' graduation.id %}">
                                 <i class="bi bi-trash3 text-danger"></i>
                             </a></td>
                         {% endif %}

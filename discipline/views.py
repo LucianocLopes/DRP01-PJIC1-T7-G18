@@ -9,13 +9,18 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from .models import Discipline, Graduation
 
 from .forms import DisciplineForm, GraduationForm
-
+from school.models import School
 
 class DisciplineBaseView(PermissionRequiredMixin, View):
     model = Discipline
     templatename = 'discipline/discipline_list.html'
     success_url = reverse_lazy('discipline_all')
     form_class = DisciplineForm
+    
+    def get_context_data(self, **kwargs):
+        context = super(DisciplineBaseView, self).get_context_data(**kwargs)
+        context['school'] = School.objects.all().annotate().first()
+        return context
 
 
 class DisciplineListView(DisciplineBaseView, ListView):
@@ -52,6 +57,11 @@ class GraduationBaseView(PermissionRequiredMixin, View):
     templatename = 'graduation/graduation_list.html'
     success_url = reverse_lazy('graduation_all')
     form_class = GraduationForm
+
+    def get_context_data(self, **kwargs):
+        context = super(GraduationBaseView, self).get_context_data(**kwargs)
+        context['school'] = School.objects.all().annotate().first()
+        return context
 
 
 class GraduationListView(GraduationBaseView, ListView):
