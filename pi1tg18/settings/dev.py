@@ -31,12 +31,14 @@ INTERNAL_IPS = [
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 
 # DATABASES = {
 #     # read os.environ['DATABASE_URL'] and raises
@@ -52,6 +54,21 @@ DATABASES = {
 #     )
 # }
 
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "HOST": "localhost",
+        "PORT": "3306",
+        "NAME": "pi1t7g18",
+        "USER": "lucianoclopes",
+        "PASSWORD": "WiLu010381@",
+        "OPTIONS": {
+            "charset": "utf8mb4",
+            "collation": "utf8mb4_unicode_ci",
+        },
+    }
+}
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 

@@ -39,13 +39,14 @@ INTERNAL_IPS = [
 #     )
 # }
 
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "HOST": "localhost",
+        "HOST": "pi1t7g18damasio.mysql.pythonanywhere-services.com",
         "PORT": "3306",
-        "NAME": "pi1t7g18",
-        "USER": "lucianoclopes",
+        "NAME": "pi1t7g18damasio$pi1t7g18",
+        "USER": "pi1t7g18damasio",
         "PASSWORD": "WiLu010381@",
         "OPTIONS": {
             "charset": "utf8mb4",
@@ -53,6 +54,7 @@ DATABASES = {
         },
     }
 }
+
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
