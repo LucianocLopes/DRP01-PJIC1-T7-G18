@@ -15,7 +15,6 @@ from pathlib import Path
 
 from django.contrib.messages import constants
 
-import dj_database_url
 
 env = Env(
     DEBUG=(bool, False),
