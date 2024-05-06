@@ -46,3 +46,20 @@ urlpatterns = [
     path("all_events/", all_events, name="all_events"),
 
 ]
+<<<<<<< HEAD
+=======
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/', include('debug_toolbar.urls')),
+    ] + urlpatterns
+
+
+# paginas e Erro
+handler404 = 'core.views.pagina_nao_encontrada'
+handler500 = 'core.views.erro_servidor'
+>>>>>>> d3380e7 (add corrections)

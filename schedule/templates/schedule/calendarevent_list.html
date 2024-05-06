@@ -75,6 +75,8 @@
 {% block content %}
 
     {% include 'parciais/_navbar.html' %}
+        <div class="container-fluid home-index p-5">
+    <div class="container text-center p-5">
     <div class="container pt-2 pb-5" id='wrap'>
         <div class="table-responsive col">
             <h1 class="text-center">Lista de Eventos</h1>
@@ -97,7 +99,7 @@
                     {% for event in calendarevent_list %}
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
-                        <td class="ml-5"><a href="{% url 'event_detail' event.id %}">{{ event.title }}</a></td>
+                        <td class="ml-5"><a href="{% url 'event_detail' event.id %}">{{ event.title|title }}</a></td>
                         <td class="text-center">{{ event.start|naturalday }}</td>
                         <td class="text-center">{{ event.start|naturaltime }}</td>
                         <td class="text-center">{{ event.end|naturaltime }}</td>
@@ -128,6 +130,11 @@
         </div>
             
     </div>
+<<<<<<< HEAD
 
 >>>>>>> ac9891b (corrections apps)
+=======
+    </div>
+        </div>
+>>>>>>> d3380e7 (add corrections)
 {% endblock content %}

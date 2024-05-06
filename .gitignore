@@ -178,8 +178,11 @@ cython_debug/
 #.idea/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 stati/
 =======
+=======
+>>>>>>> dd29d47 (add corrections)
 ### Python Patch ###
 # Poetry local configuration file - https://python-poetry.org/docs/configuration/#local-configuration
 poetry.toml
@@ -191,4 +194,10 @@ poetry.toml
 pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python
+<<<<<<< HEAD
 >>>>>>> b1ff1c7 (feat: first commit - project creation and initial configurations)
+=======
+=======
+stati/
+>>>>>>> d3380e7 (add corrections)
+>>>>>>> dd29d47 (add corrections)

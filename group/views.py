@@ -150,6 +150,7 @@ class GroupUpdateView(GroupBaseView, UpdateView):
 <<<<<<< HEAD
     permission_required = 'group.change_group'
     form_class = GroupForm
+<<<<<<< HEAD
         
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -162,6 +163,16 @@ class GroupUpdateView(GroupBaseView, UpdateView):
     permission_required = 'group.change_group'
     form_class = GroupForm
 >>>>>>> 64cbb11 (configurations and edits apps)
+=======
+    
+    def form_valid(self, form):
+        for student in form.students.all():
+            if not student.registered:
+                student.matricular()
+
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+>>>>>>> d3380e7 (add corrections)
 
 
 class GroupDeleteView(GroupBaseView, DeleteView):
