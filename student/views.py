@@ -15,7 +15,6 @@ from .forms import StudentForm
 class StudentBaseView(PermissionRequiredMixin, View):
     model = Student
     templatename = 'student/student_list.html'
-    fields = '__all__'
     success_url = reverse_lazy('student_all')
 
     def get_context_data(self, **kwargs):
@@ -31,13 +30,13 @@ class StudentListView(StudentBaseView, ListView):
 
 class StudentDetailView(StudentBaseView, DetailView):
     'detailview'
-    form = StudentForm
+    form_class = StudentForm
     permission_required = 'student.change_student'
 
 
 class StudentCreateView(StudentBaseView, CreateView):
     'createview'
-    form = StudentForm
+    form_class = StudentForm
     permission_required = 'student.add_student'
 
     def form_valid(self, form):
@@ -47,7 +46,7 @@ class StudentCreateView(StudentBaseView, CreateView):
 
 class StudentUpdateView(StudentBaseView, UpdateView):
     'updadeview'
-    form = StudentForm
+    form_class = StudentForm
     permission_required = 'student.change_student'
 
 

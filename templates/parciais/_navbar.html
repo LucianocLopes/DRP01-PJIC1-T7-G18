@@ -16,6 +16,12 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
                     </li>
+                    
+                    
+            {% if user.is_authenticated %}
+                        
+                    
+                                                
                     {% if perms.school.view_school %}
                         <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -63,11 +69,10 @@
                             <a class="nav-link" href="{% url 'student_all' %}">Alunos</a>
                         </li>
                     {% endif %}
-               
+
                     <li class="nav-item">
                         <a class="nav-link" href="#">Grade Escolar</a>
                     </li>
-               
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {% if user.first_name %}
@@ -80,6 +85,7 @@
                             <li><a class="dropdown-item" href="{% url 'account_logout' %}">Sair</a></li>
                         </ul>
                     </li>
+            {% endif %}
                 </ul>
             </div>
         </div>

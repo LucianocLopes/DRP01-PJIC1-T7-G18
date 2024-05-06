@@ -8,23 +8,22 @@
 {% block content %}
 
     {% include 'parciais/_navbar.html' %}
-
-    {% url 'student_all' as list_all %}
-    <div class="container pt-2 pb-5" id='wrap'>
-        <div class="container d-flex justify-content-center mt-5">
-            <div class="col mt-5 text-center">
-                <h1 class="mb-5">Excluir Aluno</h1>
-
-                <p class="h5">Você deseja realmente excluir o aluno?</p>
-                <h4 class="mt-5">{{ student.name }}</h4>
-                <h5 class="my-1">Nome da Mãe: {{ student.mother_name }} | Nome do Pai: {{ student.father_name }}</h5>
-                <form action="" method="POST">
-                    {% csrf_token %}
-                    <input type="submit" class="btn btn-primary btn-lg mx-3 my-3" value="Confirmar">
-                    <input type="submit" class="btn btn-danger btn-lg mx-3 my-3" onclick="window.location='{{ list_all }}'; return false;" value="Cancelar">
-                </form>
+<div class="container-fluid home-index p-5">
+    <div class="container text-center p-5"> 
+        {% url 'student_all' as list_all %}
+        <div class="container pt-2 pb-5" id='wrap'>
+            <div class="container d-flex justify-content-center mt-5">
+                <div class="col mt-5 text-center">
+                    <h1 class="mb-5">Excluir Aluno {{ student.full_name|title }}</h1>
+                    <p class="h5">Você deseja realmente excluir o aluno?</p>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" class="btn btn-success btn-lg mx-3 my-3" value="Sim">
+                        <input type="submit" class="btn btn-danger btn-lg mx-3 my-3" onclick="window.location='{{ list_all }}'; return false;" value="Não">
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-
+</div>
 {% endblock %}

@@ -1,9 +1,11 @@
-{% extends "account/base_manage_email.html" %}
+{% extends "base.html" %}
 {% load i18n %}
-{% load allauth %}
+{% load allauth static %}
+
 {% block head_title %}
     {% trans "Email Address" %}
 {% endblock head_title %}
+
 {% block content %}
     {% element h1 %}
         {% trans "Email Address" %}

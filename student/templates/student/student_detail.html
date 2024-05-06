@@ -7,35 +7,37 @@
 
     {% include 'parciais/_navbar.html' %}
 
-
-    <div class="container pt-2 pb-5" id='wrap'>
-        <div class="table-responsive col">
-            <h1 class="text-center">Informações da Escola</h1>
-            <div class="d-flex justify-content-center">
-                <table class="table table-striped mt-5">
-                    <thead>
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    
-                        {% for label, value in student.get_fields %}
+<div class="container-fluid home-index p-5">
+    <div class="container text-center"> 
+        <div class="container" id='wrap'>
+            <div class="table-responsive col">
+                <h1 class="text-center">Informações do Aluno</h1>
+                <div class="d-flex justify-content-center">
+                    <table class="table table-striped mt-5">
+                        <thead>
                             <tr>
-                                <td>{{  label| upper }}</td>
-                                <td>{{ value }}</td>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
                             </tr>
-                        {% endfor %}
-                            
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        
+                            {% for label, value in student.get_fields %}
+                                <tr>
+                                    <td>{{  label| upper }}</td>
+                                    <td>{{ value }}</td>
+                                </tr>
+                            {% endfor %}
+                                
+                        </tbody>
+                    </table>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <a href="{% url 'student_all' %}" class="d-block btn btn-primary btn-lg my-5">Voltar</a>
+                </div>
             </div>
-            <div class="d-flex justify-content-center">
-                <a href="{% url 'student_all' %}" class="d-block btn btn-primary btn-lg my-5">Voltar</a>
-            </div>
-        </div>
-    </div>        
-
+        </div>        
+    </div>
+</div>
 
 {% endblock  %}
