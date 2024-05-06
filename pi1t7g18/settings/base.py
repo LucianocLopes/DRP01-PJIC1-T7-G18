@@ -218,6 +218,13 @@ LOGIN_URL = 'accounts/login'
 LOGOUT_URL = 'accounts/logout'
 
 # Configuração para página não encontrada (404)
+<<<<<<< HEAD:pi1t7g18/settings/base.py
 handler404 = 'core.views.page_not_found'
 # Configuração para erro interno do servidor (500)
 handler500 = 'core.views.server_error'
+=======
+handler404 = 'core.views.pagina_nao_encontrada'
+
+# Configuração para erro interno do servidor (500)
+handler500 = 'core.views.erro_servidor'
+>>>>>>> 3d78220 (preparations deploy):pi1tg18/settings/base.py
