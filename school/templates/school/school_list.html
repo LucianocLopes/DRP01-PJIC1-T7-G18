@@ -5,49 +5,49 @@
 {% block content %}
 
     {% include 'parciais/_navbar.html' %}
-    <div class="container pt-2 pb-5" id='wrap'>
-        <div class="table-responsive col">
-            <h1 class="text-center">Informações da Escola</h1>        
-            <table class="table table-striped mt-5">
-                {% include 'parciais/_pagination.html' %}
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th class="text-center" scope="col">Nome da Escola</th>
-                        <th class="text-center" scope="col">CNPJ</th>
-                        <th class="text-center" scope="col">Inscrição Secretaria</th>
-                        <th class="text-center" scope="col">Telefone</th>
-                        <th class="text-center" scope="col">E-mail</th>
-                        <th class="text-center" scope="col">Alterar</th>
-                        <th class="text-center" scope="col">Excluir</th>
-                    </tr>
-                </thead>
-                <tbody>
+<div class="container-fluid home-index p-5">
+    <div class="container text-center"> 
+        <div class="container" id='wrap'>
+            <div class="table-responsive col">
+                <h1 class="text-center p-4">Informações da Escola</h1>
+                <div class="col mt-5 image_school_2"></div>         
+                <table class="table">
+                    {% include 'parciais/_pagination.html' %}
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th class="text-center" scope="col">Nome da Escola</th>
+                            <th class="text-center" scope="col">CNPJ</th>
+                            <th class="text-center" scope="col">Inscrição Secretaria</th>
+                            <th class="text-center" scope="col">Telefone</th>
+                            <th class="text-center" scope="col">E-mail</th>
+                            <th class="text-center" scope="col">Alterar</th>
+                            <th class="text-center" scope="col">Excluir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                        {% for school in school_list %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td class="ml-5"><a href="{% url 'school_detail' school.id %}">{{ school.name|title }}</a></td>
+                            <td class="text-center">{{ school.cnpj_number }}</td>
+                            <td class="text-center">{{ school.school_number }}</td>
+                            <td class="text-center">({{ school.phone_ddd }}) {{ school.phone_number }}</td>
+                            <td class="text-center">{{ school.email }}</td>
+                            <td class="text-center"><a href="{% url 'school_update' school.id %}">
+                                <i class="bi bi-pencil-square text-success"></i>
+                            </a></td>
+                            <td class="text-center"><a href="{% url 'school_delete' school.id %}">
+                                <i class="bi bi-trash3 text-danger"></i>
+                            </a></td>
+                        </tr>
+                    {% endfor %}
                 
-                    {% for school in school_list %}
-                    <tr>
-                        <th scope="row">{{ forloop.counter }}</th>
-                        <td class="ml-5"><a href="{% url 'school_detail' school.id %}">{{ school.name }}</a></td>
-                        <td class="text-center">{{ school.cnpj_number }}</td>
-                        <td class="text-center">{{ school.school_number }}</td>
-                        <td class="text-center">({{ school.phone_ddd }}) {{ school.phone_number }}</td>
-                        <td class="text-center">{{ school.email }}</td>
-                        <td class="text-center"><a href="{% url 'school_update' school.id %}">
-                            <i class="bi bi-pencil-square text-success"></i>
-                        </a></td>
-                        <td class="text-center"><a href="{% url 'school_delete' school.id %}">
-                            <i class="bi bi-trash3 text-danger"></i>
-                        </a></td>
-                    </tr>
-                {% endfor %}
-            
-                </tbody>
-            </table>    
+                    </tbody>
+                </table>    
+            </div>
         </div>
-            
-        <div class="col mt-5 image_school_2"></div>            
-  
-    
     </div>
-
+</div>
 {% endblock content %}

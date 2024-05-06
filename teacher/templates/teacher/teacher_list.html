@@ -5,62 +5,65 @@
 {% block content %}
 
     {% include 'parciais/_navbar.html' %}
-    <div class="container pt-2 pb-5" id='wrap'>
-        <div class="table-responsive col">
-            <h1 class="text-center">Professores</h1>
-            <table class="table table-striped mt-5">
-                {% include 'parciais/_pagination.html' %}
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th class="text-center" scope="col">Nome</th>
-                        <th class="text-center" scope="col">Sobrenome</th>
-                        <th class="text-center" scope="col">Telefone</th>
-                        <th class="text-center" scope="col">E-mail</th>
-                        <th class="text-center" scope="col">Alterar</th>
-                        <th class="text-center" scope="col">Excluir</th>
-                    </tr>
-                </thead>
-                <tbody>
+
+<div class="container-fluid home-index p-5">
+    <div class="container text-center"> 
+        <div class="container" id='wrap'>
+            <div class="table-responsive col">
+                <h1 class="text-center pt-4">Professores</h1>
+                <div class="col mt-5 image_school_2"></div>  
+                <table class="table table-striped">
+                    {% include 'parciais/_pagination.html' %}
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th class="text-center" scope="col">Nome</th>
+                            <th class="text-center" scope="col">Sobrenome</th>
+                            <th class="text-center" scope="col">Telefone</th>
+                            <th class="text-center" scope="col">E-mail</th>
+                            <th class="text-center" scope="col">Alterar</th>
+                            <th class="text-center" scope="col">Excluir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                        {% for teacher in teacher_list %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            {% if perms.teacher.view_teatcher %}
+                                <td class="ml-5"><a href="{% url 'teacher_detail' teacher.id %}">Prof. {{ teacher.first_name|title }}</a></td>
+                            {% else %}
+                                <td clSass="ml-5">Prof. {{ teacher.first_name|title }}</td>
+                            {% endif %}
+                            <td class="text-center">{{ teacher.last_name|title }}</td>
+                            <td class="text-center">({{ teacher.phone_ddd }}) {{ teacher.phone_number }}</td>
+                            <td class="text-center">{{ teacher.email }}</td>
+                            
+                            {% if perms.teacher.change_teacher %}
+                                <td class="text-center"><a href="{% url 'teacher_update' teacher.id %}">
+                                    <i class="bi bi-pencil-square text-success"></i>
+                                </a></td>
+                            {% endif %}
+
+                            {% if perms.teacher.delete_teacher %}
+                                <td class="text-center"><a href="{% url 'teacher_delete' teacher.id %}">
+                                    <i class="bi bi-trash3 text-danger"></i>
+                                </a></td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
                 
-                    {% for teacher in teacher_list %}
-                    <tr>
-                        <th scope="row">{{ forloop.counter }}</th>
-                        {% if perms.teacher.view_teatcher %}
-                            <td class="ml-5"><a href="{% url 'teacher_detail' teacher.id %}">Prof. {{ teacher.first_name }}</a></td>
-                        {% else %}
-                            <td clSass="ml-5">Prof. {{ teacher.first_name }}</td>
-                        {% endif %}
-                        <td class="text-center">{{ teacher.last_name }}</td>
-                        <td class="text-center">({{ teacher.phone_ddd }}) {{ teacher.phone_number }}</td>
-                        <td class="text-center">{{ teacher.email }}</td>
-                        
-                        {% if perms.teacher.change_teacher %}
-                            <td class="text-center"><a href="{% url 'teacher_update' teacher.id %}">
-                                <i class="bi bi-pencil-square text-success"></i>
-                            </a></td>
-                        {% endif %}
-
-                        {% if perms.teacher.delete_teacher %}
-                            <td class="text-center"><a href="{% url 'teacher_delete' teacher.id %}">
-                                <i class="bi bi-trash3 text-danger"></i>
-                            </a></td>
-                        {% endif %}
-                    </tr>
-                {% endfor %}
-            
-                </tbody>
-            </table>    
-        </div>
-        {% if perms.teacher.add_teacher %}
-            <div class="d-flex justify-content-center">
-                <a href="{% url 'teacher_create' %}" class="d-block btn btn-primary btn-lg my-5 mx-2 my-2">Novo Cadastro</a>
+                    </tbody>
+                </table>    
             </div>
-        {% else %}
-            não tem permissões
-        {% endif %}
-            
-        <div class="col mt-5 image_school"></div>    
+            {% if perms.teacher.add_teacher %}
+                <div class="d-flex justify-content-center">
+                    <a href="{% url 'teacher_create' %}" class="d-block btn btn-primary btn-lg my-5 mx-2 my-2">Novo Cadastro</a>
+                </div>
+            {% else %}
+                não tem permissões
+            {% endif %}
+        </div>
     </div>
-
+</div>
 {% endblock content %}
