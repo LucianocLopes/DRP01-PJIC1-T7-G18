@@ -11,3 +11,4 @@ class GroupForm(forms.ModelForm):
         fields = '__all__'
         
         exclude = ("user",)
+

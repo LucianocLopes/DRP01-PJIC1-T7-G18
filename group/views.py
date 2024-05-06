@@ -42,10 +42,6 @@ class GroupCreateView(GroupBaseView, CreateView):
     permission_required = 'group.add_group'
 
     def form_valid(self, form):
-        for student in form.students.all():
-            if not student.registered:
-                student.matricular()
-
         form.instance.user = self.request.user
         return super().form_valid(form)
 
@@ -54,12 +50,8 @@ class GroupUpdateView(GroupBaseView, UpdateView):
     'updadeview'
     permission_required = 'group.change_group'
     form_class = GroupForm
-    
+        
     def form_valid(self, form):
-        for student in form.students.all():
-            if not student.registered:
-                student.matricular()
-
         form.instance.user = self.request.user
         return super().form_valid(form)
 
