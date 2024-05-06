@@ -129,9 +129,9 @@ DECIMAL_SEPARATOR = ','
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    BASE_DIR / 'templates/static'
+    BASE_DIR / 'templates/static/'
 ]
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = BASE_DIR / 'static/'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -168,3 +168,9 @@ MESSAGE_TAGS = {
 
 LOGIN_URL = 'accounts/login'
 LOGOUT_URL = 'accounts/logout'
+
+# Configuração para página não encontrada (404)
+handler404 = 'core.views.pagina_nao_encontrada'
+
+# Configuração para erro interno do servidor (500)
+handler500 = 'core.views.erro_servidor'
