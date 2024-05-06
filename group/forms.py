@@ -37,4 +37,8 @@ class GroupForm(forms.ModelForm):
 =======
         
         exclude = ("user",)
+<<<<<<< HEAD
 >>>>>>> d3380e7 (add corrections)
+=======
+
+>>>>>>> 30bc259 (add new corrections)
