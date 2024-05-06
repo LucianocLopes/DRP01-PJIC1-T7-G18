@@ -42,3 +42,8 @@ if settings.DEBUG:
     urlpatterns = [
         path('__debug__/', include('debug_toolbar.urls')),
     ] + urlpatterns
+
+
+# paginas e Erro
+handler404 = 'core.views.pagina_nao_encontrada'
+handler500 = 'core.views.erro_servidor'

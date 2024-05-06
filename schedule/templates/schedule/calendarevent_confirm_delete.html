@@ -10,21 +10,22 @@
     {% include 'parciais/_navbar.html' %}
 
     {% url 'event_all' as list_all %}
-    <div class="container pt-2 pb-5" id='wrap'>
-        <div class="container d-flex justify-content-center mt-5">
-            <div class="col mt-5 text-center">
-                <h1 class="mb-5">Excluir Evento</h1>
-
-                <p class="h5">Você deseja realmente excluir esse evento?</p>
-                <h4 class="mt-5">{{ calendarevent.title }}</h4>
-                <h5 class="my-1">Inicio {{ calendarevent.start }} e termino {{ calendarevent.end }}</h5>
-                <form action="" method="POST">
-                    {% csrf_token %}
-                    <input type="submit" class="btn btn-primary btn-lg" value="Confirmar">
-                    <input type="submit" class="btn btn-danger btn-lg" onclick="window.location='{{ list_all }}'; return false;" value="Cancelar">
-                </form>
+    <div class="container-fluid home-index p-5">
+        <div class="container text-center">
+            <div class="container" id='wrap'>
+                <div class="container d-flex justify-content-center mt-5">
+                    <div class="col mt-5 text-center">
+                        <h1 >Excluir Compromisso {{ calendarevent.title|title }}</h1>
+                            <h3>{{ calendarevent.start| naturalday }} - Iniciando: {{ calendarevent.start| naturaltime }} - Terminando: {{ calendarevent.end| naturaltime }}</h3>
+                        <p class="h5 mt-3">Você deseja realmente excluir esse evento?</p>
+                        <form action="" method="POST" class="p-4">
+                            {% csrf_token %}
+                            <input type="submit" class="btn btn-success btn-lg" value="Sim">
+                            <input type="submit" class="btn btn-danger btn-lg" onclick="window.location='{{ list_all }}'; return false;" value="Não">
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
 {% endblock %}
