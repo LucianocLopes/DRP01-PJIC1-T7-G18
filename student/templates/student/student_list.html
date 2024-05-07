@@ -20,8 +20,12 @@
                             <th class="text-center" scope="col">Mãe | Pai</th>
                             <th class="text-center" scope="col">email</th>
                             <th class="text-center" scope="col">Telefone</th>
-                            <th class="text-center" scope="col">Alterar</th>
-                            <th class="text-center" scope="col">Excluir</th>
+                            {% if perms.student.delete_student %}
+                                <th class="text-center" scope="col">Alterar</th>
+                            {% endif %}
+                            {% if perms.student.delete_student %}
+                                <th class="text-center" scope="col">Excluir</th>
+                            {% endif %}
                         </tr>
                     </thead>
                     <tbody>
@@ -56,8 +60,6 @@
                 <div class="d-flex justify-content-center">
                     <a href="{% url 'student_create' %}" class="d-block btn btn-primary btn-lg my-5 mx-2 my-2">Novo Cadastro</a>
                 </div>
-            {% else %}
-                não tem permissões
             {% endif %}
         
             </div>            

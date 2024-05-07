@@ -37,13 +37,17 @@
                                         <div class="d-flex justify-content-end align-items-end">
                                             <div class='col'>
                                                 <div class="btn-group">
-                                                    {% if perms.group.view_group %}
+                                                    {% if perms.group.change_group %}
                                                         <a href="{% url 'group_detail' group.id %}">
                                                             <button type="button" class="btn btn-sm btn-outline-secondary">Visualizar</button>
                                                         </a>
                                                     {% endif %}
-                                                    
                                                     {% if perms.group.change_group %}
+                                                        <a href="{% url 'gridschool_all'%}">
+                                                            <button type="button" class="btn btn-sm btn-outline-secondary">Grade Escolar</button>
+                                                        </a>
+                                                    {% endif %}
+                                                    {% if perms.group.add_group %}
                                                         <a href="{% url 'group_update' group.id %}">
                                                             <button type="button" class="btn btn-sm btn-outline-secondary">Alterar</button>
                                                         </a>

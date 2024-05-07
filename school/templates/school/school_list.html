@@ -21,8 +21,12 @@
                             <th class="text-center" scope="col">Inscrição Secretaria</th>
                             <th class="text-center" scope="col">Telefone</th>
                             <th class="text-center" scope="col">E-mail</th>
-                            <th class="text-center" scope="col">Alterar</th>
-                            <th class="text-center" scope="col">Excluir</th>
+                            {% if perms.school.delete_school %}
+                                <th class="text-center" scope="col">Alterar</th>
+                            {% endif %}
+                            {% if perms.school.delete_school %}
+                                <th class="text-center" scope="col">Excluir</th>
+                            {% endif %}
                         </tr>
                     </thead>
                     <tbody>
@@ -35,12 +39,16 @@
                             <td class="text-center">{{ school.school_number }}</td>
                             <td class="text-center">({{ school.phone_ddd }}) {{ school.phone_number }}</td>
                             <td class="text-center">{{ school.email }}</td>
+                            {% if perms.school.add_school %}
                             <td class="text-center"><a href="{% url 'school_update' school.id %}">
                                 <i class="bi bi-pencil-square text-success"></i>
                             </a></td>
+                            {% endif %}
+                            {% if perms.school.delete_school %}
                             <td class="text-center"><a href="{% url 'school_delete' school.id %}">
                                 <i class="bi bi-trash3 text-danger"></i>
                             </a></td>
+                            {% endif %}
                         </tr>
                     {% endfor %}
                 

@@ -16,20 +16,14 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
                     </li>
-                    
-                    
             {% if user.is_authenticated %}
-                        
-                    
-                                                
-                    {% if perms.school.view_school %}
+                    {% if perms.calendarevent.view_calendarevent %}
                         <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Agenda
                                 </a>
                                 <ul class="dropdown-menu">
                                     {% if perms.calendarevent.add_calendarevent %}
-
                                         <li><a class="dropdown-item" href="{% url 'event_all' %}">Lista de Compromissos</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                     {% endif %}
@@ -39,16 +33,26 @@
                                 </ul>
                             </li>
                     {% endif %}
-
                     {% if perms.school.view_school %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Escola
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{% url 'school_all' %}">Informações Cadastrais</a></li>
-                                <li><a class="dropdown-item" href="{% url 'struct_all' %}">Estrutura Escular</a></li>
-                                <li><hr class="dropdown-divider"></li>
+                                {% if perms.school.view_school %}
+                                    <li><a class="dropdown-item" href="{% url 'school_all' %}">Informações Cadastrais</a></li>
+                                {% endif %}
+                                {% if perms.structschool.view_structschool %}
+                                    <li><a class="dropdown-item" href="{% url 'struct_all' %}">Estrutura Escular</a></li>
+                                {% endif %}
+                            </ul>
+                    {% endif %}
+                    {% if perms.discipline.view_discipline %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Graduações
+                            </a>
+                            <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{% url 'discipline_all' %}">Disciplinas</a></li>
                                 <li><a class="dropdown-item" href="{% url 'graduation_all' %}">Graduações</a></li>
                                 <li><hr class="dropdown-divider"></li>
@@ -56,7 +60,16 @@
                             </ul>
                         </li>  
                     {% endif %}
-                    
+                    {% if perms.group.view_group %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Classes Escolar
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'group_all' %}">Turmas</a></li>
+                            </ul>
+                        </li>  
+                    {% endif %}
                 
                     {% if perms.teacher.view_teacher %}
                         <li class="nav-item">

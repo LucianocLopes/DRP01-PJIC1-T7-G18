@@ -108,8 +108,12 @@
                                                 <th class="">Responsáveis</th>
                                                 <th class="">E-mail</th>
                                                 <th class="">Telefone</th>
-                                                <th class="">Alterar</th>
-                                                <th class="">Excluir</th>
+                                                {% if perms.student.delete_student %}
+                                                    <th class="text-center" scope="col">Alterar</th>
+                                                {% endif %}
+                                                {% if perms.student.delete_student %}
+                                                    <th class="text-center" scope="col">Excluir</th>
+                                                {% endif %}
                                             </tr>
                                         </thead>
                                         <tbody>

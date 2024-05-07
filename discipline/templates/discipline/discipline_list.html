@@ -17,8 +17,12 @@
                                 <th>#</th>
                                 <th class="text-center" scope="col">Nome</th>
                                 <th class="text-center" scope="col">Horas Semanais</th>
+                            {% if perms.discipline.delete_discipline %}
                                 <th class="text-center" scope="col">Alterar</th>
+                            {% endif%}
+                            {% if perms.discipline.delete_discipline %}
                                 <th class="text-center" scope="col">Excluir</th>
+                            {% endif%}
                             </tr>
                         </thead>
                         <tbody>
@@ -33,7 +37,7 @@
                                 {% endif %}
                                 <td class="text-center">{{ discipline.duration }} hrs</td>
                                 
-                                {% if perms.discipline.change_discipline %}
+                                {% if perms.discipline.add_discipline %}
                                     <td class="text-center"><a href="{% url 'discipline_update' discipline.id %}">
                                         <i class="bi bi-pencil-square text-success"></i>
                                     </a></td>

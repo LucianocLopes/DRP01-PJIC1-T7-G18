@@ -17,8 +17,12 @@
                                 <th>#</th>
                                 <th class="text-center" scope="col">Graduação</th>
                                 <th class="text-center" scope="col">Carga Horária Semanal</th>
+                            {% if perms.graduation.delete_graduation %}
                                 <th class="text-center" scope="col">Alterar</th>
+                            {% endif %}
+                            {% if perms.graduation.delete_graduation %}
                                 <th class="text-center" scope="col">Excluir</th>
+                            {% endif %}
                             </tr>
                         </thead>
                         <tbody>                        
@@ -32,7 +36,7 @@
                                 {% endif %}
                                 <td class="text-center">{{ graduation.duration_hours }} hrs</td>
                                 
-                                {% if perms.graduation.change_graduation %}
+                                {% if perms.graduation.add_graduation %}
                                     <td class="text-center"><a href="{% url 'graduation_update' graduation.id %}">
                                         <i class="bi bi-pencil-square text-success"></i>
                                     </a></td>

@@ -21,8 +21,12 @@
                             <th class="text-center" scope="col">Sobrenome</th>
                             <th class="text-center" scope="col">Telefone</th>
                             <th class="text-center" scope="col">E-mail</th>
-                            <th class="text-center" scope="col">Alterar</th>
-                            <th class="text-center" scope="col">Excluir</th>
+                            {% if perms.teacher.delete_teacher %}
+                                <th class="text-center" scope="col">Alterar</th>
+                            {% endif %}
+                            {% if perms.teacher.delete_teacher %}
+                                <th class="text-center" scope="col">Excluir</th>
+                            {% endif %}
                         </tr>
                     </thead>
                     <tbody>
@@ -39,7 +43,7 @@
                             <td class="text-center">({{ teacher.phone_ddd }}) {{ teacher.phone_number }}</td>
                             <td class="text-center">{{ teacher.email }}</td>
                             
-                            {% if perms.teacher.change_teacher %}
+                            {% if perms.teacher.add_teacher %}
                                 <td class="text-center"><a href="{% url 'teacher_update' teacher.id %}">
                                     <i class="bi bi-pencil-square text-success"></i>
                                 </a></td>
@@ -60,8 +64,6 @@
                 <div class="d-flex justify-content-center">
                     <a href="{% url 'teacher_create' %}" class="d-block btn btn-primary btn-lg my-5 mx-2 my-2">Novo Cadastro</a>
                 </div>
-            {% else %}
-                não tem permissões
             {% endif %}
         </div>
     </div>
