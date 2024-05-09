@@ -44,7 +44,7 @@ class City(models.Model):
         return reverse("City_detail", kwargs={"pk": self.pk})
 
     def get_cityuf(self):
-        return f'{self.name.title()}/{self.state.get_uf}'
+        return f'{self.name.title()}/{self.state.get_uf()}'
 
 
 class AddressType(models.Model):
@@ -90,3 +90,15 @@ class Address(models.Model):
 
     def get_address(self):
         return f'{self.zip_code} - {self.address_type} {self.address.title()} - {self.district.title()} - {self.city.get_cityuf}'
+    
+    def get_type_address(self):
+        return f'{self.address_type} {self.address}'
+
+class PhoneBase(models.Model):
+
+    country_code = models.IntegerField(_("Código do Pais"))
+    locale_code = models.IntegerField(_("Código da Localidade"))
+    number = models.IntegerField(_("Numero"))
+
+    class Meta:
+        abstract = True
