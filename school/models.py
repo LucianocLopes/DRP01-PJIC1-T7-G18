@@ -21,9 +21,6 @@ class School(models.Model):
     def get_fantasy(self):
         return self.fantasy_name.title()
 
-    def get_absolute_url(self):
-        return reverse("School_detail", kwargs={"pk": self.pk})
-
 
 class AddressSchool(models.Model):
 
@@ -39,6 +36,7 @@ class AddressSchool(models.Model):
     )
     number = models.IntegerField(_("Número"))
     complement = models.CharField(_("Complemento"), max_length=20, blank=True, null=True)
+
 
     class Meta:
         verbose_name = _("Endereço da Escola")
@@ -57,10 +55,8 @@ class AddressSchool(models.Model):
         return self.address.city.get_cityuf
     
     def __str__(self):
-        return self.address.get_address()
+        return f'CEP: {self.get_zip_code} - Endereço: {self.get_address()}, {self.number}, {self.complement} - {self.get_city_state()}'
 
-    def get_absolute_url(self):
-        return reverse("AddressSchool_detail", kwargs={"pk": self.pk})
 
 class PhoneSchool(PhoneBase):
 
@@ -106,5 +102,77 @@ class PhoneSchool(PhoneBase):
     def __str__(self):
         return f'+{self.country_code}({self.locale_code}) {self.number}'
 
-    def get_absolute_url(self):
-        return reverse("PhoneSchool_detail", kwargs={"pk": self.pk})
+
+class TurnSchool(models.Model):
+
+    name = models.CharField(_("Nome do Turno"), max_length=10)
+    school = models.ForeignKey(
+        School, 
+        verbose_name=_("Escola"), 
+        on_delete=models.PROTECT,
+    )
+    start_time = models.TimeField(_("Hora de Início"))
+    duration = models.DurationField(_("Duração"))
+
+    class Meta:
+        verbose_name = _("Turno Escolar")
+        verbose_name_plural = _("Turnos da Escola")
+
+    def __str__(self):
+        return self.name.title()
+
+class ClassRoom(models.Model):
+    PADRAO = 'P'
+    ESPECIAL = 'E'
+    INFORMATICA = 'N'
+    LABORATORIO = 'L'
+    INCLUSIVA = 'I'
+    OUTRA = 'O'
+    CLASSROOM_TYPE_CHOICES = {
+        PADRAO: _('Padrão'),
+        ESPECIAL: _('Especial'),
+        INFORMATICA: _('Informática'),
+        LABORATORIO: _('Laboratório'),
+        INCLUSIVA: _('Inclusiva'),
+        OUTRA: _('Outra')
+    }
+        
+    identification = models.CharField(_("Identificação"), max_length=5)
+    vacation = models.PositiveIntegerField(_("Vagas"))
+    classroom_tyoe = models.CharField(
+        _("Tipo de Classe de Aula"),
+        max_length=1,
+        choices=CLASSROOM_TYPE_CHOICES
+    )
+    school = models.ForeignKey(
+        School,
+        verbose_name=_("Escola"),
+        on_delete=models.PROTECT,
+    )
+    class Meta:
+        verbose_name = _("Sala de Aula")
+        verbose_name_plural = _("Salas de Aula")
+
+    def __str__(self):
+        return f'Sala {self.identification}'
+
+
+class AcademicYear(models.Model):
+
+    start_date = models.DateField(_("Data do Inicio"))
+    end_date = models.DateField(_("Data do Termino"))
+    start_recess = models.DateField(_("Inicio das Férias"))
+    end_recess = models.DateField(_("Final das Férias"))
+    school = models.ForeignKey(
+        School, 
+        verbose_name=_("Escola"), 
+        on_delete=models.PROTECT,
+    )
+
+    class Meta:
+        verbose_name = _("Ano Letivo")
+        verbose_name_plural = _("Anos Letivos")
+
+    def __str__(self):
+        return f'Ano Letivo: {self.start_date.year}'
+
