@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('accounts/', include('allauth.urls')),
+    path("", include('core.urls')),
     path('admin/', admin.site.urls),
 ]
 
@@ -18,6 +19,6 @@ if settings.DEBUG:
     ] + urlpatterns
 
 
-# # paginas e Erro
-# handler404 = 'core.views.pagina_nao_encontrada'
-# handler500 = 'core.views.erro_servidor'
+# paginas e Erro
+handler404 = 'core.views.page_not_found'
+handler500 = 'core.views.server_error'
