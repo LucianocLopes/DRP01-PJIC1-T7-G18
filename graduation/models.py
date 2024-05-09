@@ -3,6 +3,7 @@ from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
 
 from school.models import School
+from teacher.models import Teacher
 
 
 class Graduation(models.Model):
@@ -14,7 +15,7 @@ class Graduation(models.Model):
         on_delete=models.PROTECT,
     )
     teacher = models.ForeignKey(
-        "Teacher", 
+        Teacher, 
         verbose_name=_("Professor(a)"), 
         on_delete=models.PROTECT,
     )
@@ -35,7 +36,7 @@ class Discipline(models.Model):
 
     name = models.CharField(_("Disciplina"), max_length=15)
     disciplines = models.ManyToManyField(
-        'Discipline', verbose_name=_("Disciplina"))
+        'Discipline', verbose_name=_("Disciplina"), null=True, blank=True)
 
     class Meta:
         verbose_name = _("Disciplina")
