@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     # MY APPS
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -152,8 +153,7 @@ MESSAGE_TAGS = {
 LOGIN_URL = 'accounts/login'
 LOGOUT_URL = 'accounts/logout'
 
-# # Configuração para página não encontrada (404)
-# handler404 = 'core.views.pagina_nao_encontrada'
-
-# # Configuração para erro interno do servidor (500)
-# handler500 = 'core.views.erro_servidor'
+# Configuração para página não encontrada (404)
+handler404 = 'core.views.page_not_found'
+# Configuração para erro interno do servidor (500)
+handler500 = 'core.views.server_error'
