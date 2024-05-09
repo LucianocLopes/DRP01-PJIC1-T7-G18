@@ -1,15 +1,15 @@
 from django.contrib import admin
 
-from .models import PhoneSchool, AddressSchool, School
+from .models import *
 
-
+# INLINE
 class PhoneSchoolInline(admin.TabularInline):
     '''Tabular Inline View for PhoneSchool'''
 
     model = PhoneSchool
     min_num = 1
     max_num = 3
-    extra = 1
+    extra = 0
 
 class AddressSchoolInline(admin.TabularInline):
     '''Tabular Inline View for AddressSchool'''
@@ -19,6 +19,29 @@ class AddressSchoolInline(admin.TabularInline):
     max_num = 1
 
 
+class TurnSchoolInline(admin.TabularInline):
+    '''Tabular Inline View for TurnSchool'''
+
+    model = TurnSchool
+    max_num = 4
+    extra = 0
+
+class ClassRoomInline(admin.TabularInline):
+    '''Tabular Inline View for ClassRoom'''
+
+    model = ClassRoom
+    min_num = 0
+    extra = 0
+
+class AcademicYearInline(admin.TabularInline):
+    '''Tabular Inline View for AcademicYear'''
+
+    model = AcademicYear
+    min_num = 0
+    extra = 0
+
+
+# ADMIN_VIEW
 @admin.register(School)
 class SchoolAdmin(admin.ModelAdmin):
     '''Admin View for School'''
@@ -27,6 +50,9 @@ class SchoolAdmin(admin.ModelAdmin):
     inlines = [
         PhoneSchoolInline,
         AddressSchoolInline,
+        TurnSchoolInline,
+        ClassRoomInline,
+        AcademicYearInline,
     ]
     
 @admin.register(AddressSchool)
@@ -41,3 +67,5 @@ class PhoneSchoolAdmin(admin.ModelAdmin):
     '''Admin View for School'''
 
     list_display = ('school','phone_type','get_phone',)
+
+
