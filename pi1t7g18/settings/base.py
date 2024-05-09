@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'allauth.account',
     # MY APPS
     'core',
+    'school',
 ]
 
 MIDDLEWARE = [
