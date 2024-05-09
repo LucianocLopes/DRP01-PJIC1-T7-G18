@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% include 'partial/_head.html' %}
+    
+    {% block title %}
+    {% endblock title %}
+    
+</head>
+<body class="body" id="body-main-color">
+    {% include 'partial/_sidebar.html' %}
+    {% include 'partial/_navbar.html' %}
+    <div class="contaier-fluid">
+        <div class="wrapper">
+    {% block content %}{% endblock content %}        
+        </div>
+    </div>
+</body>
+</html>
