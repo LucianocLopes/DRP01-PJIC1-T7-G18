@@ -108,5 +108,13 @@ button.navbar-toggler-side {
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #ffff00;
+}
 
+/* GRID */
+
+#grid-color {
+    background-color: #fff;
+}
+#wrapper {
+    background-color: #130e0e4b;
 }

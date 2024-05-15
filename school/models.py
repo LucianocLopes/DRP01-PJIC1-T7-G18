@@ -1,9 +1,10 @@
+from datetime import datetime
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from django.urls import reverse
 
 from core.models import Address, PhoneBase
 
+from .utils import weeks, number_week, days_week
 
 class School(models.Model):
 
@@ -157,22 +158,51 @@ class ClassRoom(models.Model):
         return f'Sala {self.identification}'
 
 
-class AcademicYear(models.Model):
-
-    start_date = models.DateField(_("Data do Inicio"))
-    end_date = models.DateField(_("Data do Termino"))
-    start_recess = models.DateField(_("Inicio das Férias"))
-    end_recess = models.DateField(_("Final das Férias"))
+class SchoolYear(models.Model):
     school = models.ForeignKey(
         School, 
         verbose_name=_("Escola"), 
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE
     )
+    first_start = models.DateField(_("Inicio ano letivo"))
+    halfyear_start = models.DateField(_("Inicio Ferias"))
+    second_start = models.DateField(_("Inicio 2º Semestre"))
+    end = models.DateField(_("Termino ano letivo"), auto_now=False, auto_now_add=False)
 
+    @property
+    def first_semester(self) -> dict:
+        start = datetime(year=self.first_start.year, month=self.first_start.month, day=self.first_start.day)
+        end = datetime(year=self.halfyear_start.year,month=self.halfyear_start.month,day=self.halfyear_start.day)
+        
+        n_week = sorted(number_week(weeks(start, end)))
+        dict = {
+            'start': start,
+            'end': end,
+            'weeks': list(n_week),
+        }
+        return dict
+    
+    
+    @property
+    def second_semester(self) -> dict:
+        start = datetime(year=self.second_start.year, month=self.second_start.month, day=self.second_start.day)
+        end = datetime(year=self.end.year,month=self.end.month,day=self.end.day)
+        
+        n_week = sorted(number_week(weeks(start, end)))
+        dict = {
+            'start': start,
+            'end': end,
+            'weeks': list(n_week),
+        }
+        return dict
+    
+    
+        
     class Meta:
         verbose_name = _("Ano Letivo")
         verbose_name_plural = _("Anos Letivos")
 
     def __str__(self):
-        return f'Ano Letivo: {self.start_date.year}'
-
+        return f'Ano: {self.first_start.year}'
+    
+    
