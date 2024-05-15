@@ -33,12 +33,13 @@ class ClassRoomInline(admin.TabularInline):
     min_num = 0
     extra = 0
 
-class AcademicYearInline(admin.TabularInline):
-    '''Tabular Inline View for AcademicYear'''
 
-    model = AcademicYear
+class SchoolYearInline(admin.TabularInline):
+    '''Tabular Inline View for SchoolYear'''
+
+    model = SchoolYear
     min_num = 0
-    extra = 0
+    extra = 1
 
 
 # ADMIN_VIEW
@@ -52,7 +53,7 @@ class SchoolAdmin(admin.ModelAdmin):
         AddressSchoolInline,
         TurnSchoolInline,
         ClassRoomInline,
-        AcademicYearInline,
+        SchoolYearInline,
     ]
     
 @admin.register(AddressSchool)
@@ -67,5 +68,3 @@ class PhoneSchoolAdmin(admin.ModelAdmin):
     '''Admin View for School'''
 
     list_display = ('school','phone_type','get_phone',)
-
-
