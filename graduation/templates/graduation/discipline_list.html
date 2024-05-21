@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% load static humanize %}
+
+{% block content %}
+
+    <div class="container-fluid home-index p-5">
+        <div class="container text-center">
+            <div class="container" id='wrap'>
+                <div class="table-responsive col p-4">
+                    <h1 class="text-center">Disciplinas</h1>
+                    <table class="table table-striped">
+                        {% comment %} {% include 'parciais/_pagination.html' %} {% endcomment %}
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th class="text-center" scope="col">Nome</th>
+                                <th class="text-center" scope="col">Horas Semanais</th>
+                            {% if perms.discipline.delete_discipline %}
+                                <th class="text-center" scope="col">Alterar</th>
+                            {% endif%}
+                            {% if perms.discipline.delete_discipline %}
+                                <th class="text-center" scope="col">Excluir</th>
+                            {% endif%}
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+                            {% for discipline in discipline_list %}
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                {% if perms.discipline.view_discipline %}
+                                    <td class="ml-5"><a href="{% url 'discipline_detail' discipline.id %}">{{ discipline.name|title }}</a></td>
+                                {% else %}
+                                    <td clSass="ml-5">{{ discipline.name|title }}</td>
+                                {% endif %}
+                                <td class="text-center">{{ discipline.duration }} hrs</td>
+                                
+                                {% if perms.discipline.add_discipline %}
+                                    <td class="text-center"><a href="{% url 'discipline_update' discipline.id %}">
+                                        <i class="bi bi-pencil-square text-success"></i>
+                                    </a></td>
+                                {% endif %}
+
+                                {% if perms.discipline.delete_discipline %}
+                                    <td class="text-center"><a href="{% url 'discipline_delete' discipline.id %}">
+                                        <i class="bi bi-trash3 text-danger"></i>
+                                    </a></td>     
+                                {% endif %}
+
+                                
+                                
+                                
+                            </tr>
+                        {% endfor %}
+                    
+                        </tbody>
+                    </table>    
+                </div>
+                {% if perms.discipline.add_discipline %}
+                    <div class="d-flex justify-content-center p-3">
+                        <a href="{% url 'discipline_create' %}" class="d-block btn btn-primary btn-lg my-5 mx-2 my-2">Novo Cadastro</a>
+                    </div>
+                {% endif %}
+                    
+                <div class="col mt-5 image_school"></div>    
+            </div>
+        </div>
+    </div>
+{% endblock content %}

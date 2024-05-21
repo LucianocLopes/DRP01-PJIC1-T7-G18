@@ -1,53 +1,23 @@
 {% extends "base.html" %}
 {% load static %}
 
-
-
     {% block content %}
-
-
-
-    <section class="py-5 text-center container">
-        <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
-        <div class="container">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">{{ school.name }}</h1>
-                    <p class="lead text-muted">Endereço: {{ school_address.type }} {{ school_address.address }}, {{ school_address.number }} {{ school_address.complement }}- Vila Sol Nascente, Suzano - SP, 08676310 Telefone: (11) 4746-2944<p>
-                        <a href="#" class="btn btn-primary my-2">Informações Cadastrais da Escola</a>
-                        <a href="#" class="btn btn-secondary my-2">Estrutura Escolar</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="album py-5">
-        <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-                {% for group in groups %}            
-                
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img class="image-card-group" width="100%" height="225" src="{% static 'images/alunos_1.jpeg' %}" aria-label="Alunos conversando"></img>
-                        <div class="card-body">
-                            <p class="card-text text-center">{{ group.graduation }} {{ group.group_name }} | Turno - {{ group.turn }} </p>
-                            <p class="card-text">Prof.: {{ group.teacher }}</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                </div>
-                                <small class="text-muted">9 mins</small>
-                            </div>
-                        </div>
+        <section class=" container py-2 text-center">
+                <div class="row py-lg-5">
+                    <div class="col-lg-6 col-md-8 mx-auto">
+                        <h1 class="text-center">Sistema de Gerenciamento Escolar</h1>
+                        <h4 class="fw-light">{{ school.name }}</h4>
+                        
+                        {% for address in addresses %}
+                        
+                            {% if address.school == school %}
+                                <p class="lead text-muted"><b>CEP:</b> {{ address.address.zip_code }} - <b>Endereço:</b> {{ address.address.address_type }} {{ address.address.address }}, {{ address.number }} {{ address.complement }}</p>
+                                <p class="lead text-muted"><b>Bairro:</b> {{ address.address.district }} - <b>Cidade: </b>{{ address.address.city }} / <b>UF: </b> {{ address.address.city.state }}</p>
+                            {% endif %}
+                                
+                        {% endfor %}
+                            
                     </div>
-                </div>
-
-                {% endfor %}
-
             </div>
-        </div>
-    </div>
+        </section>
     {% endblock content %}

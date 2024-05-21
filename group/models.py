@@ -1,6 +1,8 @@
+from typing import Iterable
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from datetime import datetime, timedelta
+from django.urls import reverse
 
 from school.models import School, ClassRoom, TurnSchool, SchoolYear
 from teacher.models import Teacher
@@ -133,3 +135,7 @@ class GridGroup(models.Model):
 
     def __str__(self):
         return f''
+
+    def get_absolute_url(self):
+        return reverse("gridgroup_detail", kwargs={"pk": self.pk})
+    

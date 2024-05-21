@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% load static humanize %}
+
+{% block content %}
+
+    <div class="container-fluid home-index p-5">
+        <div class="container text-center"> 
+            <div class="container" id='wrap'>
+                <div class="table-responsive col">
+                    <h1 class="text-center pt-4">Professores</h1>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th class="text-center" scope="col">Nome</th>
+                                <th class="text-center" scope="col">Sobrenome</th>
+                                <th class="text-center" scope="col">Telefone</th>
+                                <th class="text-center" scope="col">E-mail</th>
+                                {% if perms.teacher.delete_teacher %}
+                                    <th class="text-center" scope="col">Alterar</th>
+                                {% endif %}
+                                {% if perms.teacher.delete_teacher %}
+                                    <th class="text-center" scope="col">Excluir</th>
+                                {% endif %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+                            {% for teacher in teacher_list %}
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                {% if perms.teacher.view_teatcher %}
+                                    <td class="ml-5"><a href="{% url 'teacher_detail' teacher.id %}">Prof. {{ teacher.first_name|title }}</a></td>
+                                {% else %}
+                                    <td clSass="ml-5">Prof. {{ teacher.first_name|title }}</td>
+                                {% endif %}
+                                <td class="text-center">{{ teacher.last_name|title }}</td>
+                                <td class="text-center">({{ teacher.phone_ddd }}) {{ teacher.phone_number }}</td>
+                                <td class="text-center">{{ teacher.email }}</td>
+                                
+                                {% if perms.teacher.add_teacher %}
+                                    <td class="text-center"><a href="#">
+                                        <i class="bi bi-pencil-square text-success"></i>
+                                    </a></td>
+                                {% endif %}
+
+                                {% if perms.teacher.delete_teacher %}
+                                    <td class="text-center"><a href="#">
+                                        <i class="bi bi-trash3 text-danger"></i>
+                                    </a></td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    
+                        </tbody>
+                    </table>    
+                </div>
+                {% if perms.teacher.add_teacher %}
+                    <div class="d-flex justify-content-center">
+                        <a href="{% url 'teacher_new' %}" class="d-block btn btn-success btn-lg my-5 mx-2 my-2">Novo Cadastro</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

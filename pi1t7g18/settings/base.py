@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'graduation',
     'teacher',
     'group',
+    'schedule',
 ]
 
 MIDDLEWARE = [
