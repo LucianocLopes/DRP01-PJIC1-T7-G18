@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+    <div class="container-fluid home-index p-5">
+        <div class="container text-center"> 
+            <div class="container" id='wrap'>
+                <div class="table-responsive col">
+                    <h1 class="text-center p-4">Informações da Escola</h1>
+                    <div class="col mt-5 image_school_2"></div>         
+                    <table class="table">
+                        {% comment %} {% include 'parciais/_pagination.html' %} {% endcomment %}
+                        <thead>
+                            <tr>
+                                <th class="text-center" scope="col">Nome da Escola</th>
+                                <th class="text-center" scope="col">Noma Fantasia</th>
+                                <th class="text-center" scope="col">Telefones</th>
+                                <th class="text-center" scope="col">E-mail</th>
+                                {% if perms.school.delete_school %}
+                                    <th class="text-center" scope="col">Alterar</th>
+                                {% endif %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+                            {% for school in school_list %}
+                            <tr>
+                                <td class="ml-5"><a href="{% url 'school_detail' school.id %}">{{ school.name|title }}</a></td>
+                                <td class="text-center">{{ school.fantasy_name | title }}</td>
+                                <td class="text-center">
+                                
+                                    {% for phone in phones %}
+                                        {% if phone.school == school %}
+                                            {{ phone }}
+                                        {% endif %}
+                                    {% endfor %}
+                                
+                                </td>
+                                <td class="text-center">{{ school.email }}</td>
+                                {% if perms.school.add_school %}
+                                <td class="text-center"><a href="{% url 'school_update' school.id %}">
+                                    <i class="bi bi-pencil-square text-success"></i>
+                                </a></td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}                    
+                        </tbody>
+                    </table>    
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

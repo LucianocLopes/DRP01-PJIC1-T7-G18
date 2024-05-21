@@ -1,0 +1,29 @@
+{% load static %}
+
+|
+
+
+<div class="container" id="calendario">
+    <div id='wrap-calendar'> 
+        <div class="btn-group p-2">                        
+            {% comment %} {% if perms.group.change_group %} {% endcomment %}
+            <a href="{% url 'event_all' %}">
+                <button type="button" class="btn btn-sm btn-outline-primary">Lista de Eventos</button>
+            </a>
+        </div>
+        <div class="btn-group p-2">                        
+            {% comment %} {% if perms.group.change_group %} {% endcomment %}
+            <a href="{% url 'week_events' %}">
+                <button type="button" class="btn btn-sm btn-outline-success">Eventos da Semana</button>
+            </a>
+            <a href="{% url 'day_events' %}">
+                <button type="button" class="btn btn-sm btn-outline-info">Eventos do Dia</button>
+            </a>
+            <a href="{% url 'scheduling' %}">
+                <button type="button" class="btn btn-sm btn-outline-secondary">Eventos do Mês</button>
+            </a>
+        </div> 
+        <div class="container px-2" id='calendar'></div>
+    </div>
+    
+</div>

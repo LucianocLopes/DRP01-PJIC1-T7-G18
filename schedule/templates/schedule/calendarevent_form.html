@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load static humanize fullcalendar_tags %}
+
+{% block content %}
+
+    <div class="container-fluid home-index p-5">
+        <div class="container text-center p-5">
+            <div class="container" id='wrap'>
+                <div class="p-5 m-3">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 order-md-0" id='event_image'></div>
+                        <div class="col-md-6 order-md-1">
+                            <div class='table-responsive'>
+                                <form action="" method="post">
+                                    {% csrf_token %}
+                                    <table class='table'>
+                                        {{ form.as_table }}
+                                    </table>    
+                                    
+                                    <div class="container d-flex justify-content-center">
+                                        <input type="submit" class="btn btn-primary btn-lg" value="Salvar">
+                                        <input type="submit" class="btn btn-danger btn-lg" onclick="window.location='{% url 'event_all' %}'; return false;" value="Cancelar">
+                                    </div>    
+                                </form> 
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+

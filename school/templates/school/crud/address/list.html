@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid home-index p-5">
+        <div class="container text-center"> 
+            <div class="container" id='wrap'>
+                <div class="table-responsive col">
+                    <h1 class="text-center p-4">Endereço da Escola</h1>        
+                    <table class="table">
+                        {% comment %} {% include 'parciais/_pagination.html' %} {% endcomment %}
+                        <thead>
+                            <tr>
+                                <th class="text-center" scope="col">CEP</th>
+                                <th class="text-center" scope="col">Tipo</th>
+                                <th class="text-center" scope="col">Endereço</th>
+                                <th class="text-center" scope="col">Número</th>
+                                <th class="text-center" scope="col">Complemento</th>
+                                <th class="text-center" scope="col">Bairro</th>
+                                <th class="text-center" scope="col">Cidade</th>
+                                <th class="text-center" scope="col">UF</th>
+                                {% if perms.school.delete_school %}
+                                    <th class="text-center" scope="col">Alterar</th>
+                                {% endif %}
+                                {% if perms.school.delete_school %}
+                                    <th class="text-center" scope="col">Excluir</th>
+                                {% endif %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+                            {% for address in addressschool_list %}
+                            <tr>
+                                <td class="text-center">{{ address.zip_code }}</td>
+                                <td class="text-center">{{ address.get_type_display }}</td>
+                                <td class="text-center"> {{ address.address }}</td>
+                                <td class="text-center">{{ address.number }}</td>
+                                <td class="text-center">{{ address.complement }}</td>
+                                <td class="text-center"> {{ address.district }}</td>
+                                <td class="text-center">{{ address.city }}</td>
+                                <td class="text-center">{{ address.city.state }}</td>
+                                {% if perms.school.add_school %}
+                                <td class="text-center"><a href="#">
+                                    <i class="bi bi-pencil-square text-success"></i>
+                                </a></td>
+                                {% endif %}
+                                {% if perms.school.delete_school %}
+                                <td class="text-center"><a href="#">
+                                    <i class="bi bi-trash3 text-danger"></i>
+                                </a></td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}                    
+                        </tbody>
+                    </table>
+                    <div class="btn-group pb-2">                        
+                        {% comment %} {% if perms.group.change_group %} {% endcomment %}
+                        <a href="#">
+                            <button type="button" class="btn btn-sm btn-outline-success">Novo</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

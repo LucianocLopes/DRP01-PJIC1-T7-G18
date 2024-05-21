@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.urls import reverse
 
 from core.models import City, Address, PhoneBase
 from school.models import School
@@ -25,6 +26,10 @@ class Teacher(models.Model):
 
     def __str__(self):
         return self.full_name
+    
+    def get_absolute_url(self):
+        
+        return reverse('teacher_detail', kwargs={'pk': self.pk})
 
 class AddressTeacher(models.Model):
 
